@@ -289,6 +289,8 @@ void __fastcall TfmConsign::tabConsignmentsShow(TObject *Sender)
 {
 //	if ( ! DM->ConsignmentsView->Active ) {
 //		DM->ConsignmentsView->Open() ;
+		DM->DSVSuppliers->Open() ;
+
 		UpdateConsignmentView(Sender);
 //	}
 }
@@ -1146,6 +1148,8 @@ void __fastcall TfmConsign::cmbSupplierFilterCloseUp(TObject *Sender)
 void __fastcall TfmConsign::Button16Click(TObject *Sender)
 {
 	cmbSupplierFilter->KeyValue = NULL;
+	CurrentMPIFilter = "";
+
 	UpdateConsignmentView(Sender);
 
 }
