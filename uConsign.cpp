@@ -8,6 +8,7 @@
 #include "uOptSelect.h"
 #include "uOptionSelect.h"
 #include "uProductTypes.h"
+#include "uNoMatch.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -273,11 +274,19 @@ void __fastcall TfmConsign::txtBarcodeLookupKeyDown(TObject *Sender, WORD &Key, 
 				}
 
 
-				Memo1->Lines->Insert(0,Now().FormatString("yyyy-mm-dd hh:nn:ss") + " Match Found for " + DM->ConsignmentsRecipientName->AsString );
+				Memo1->Lines->Insert(0,Now().FormatString("yyyy-mm-dd hh:nn:ss") + " Match Found for " + DM->ConsignmentsRecipientName->AsString + " on barcode " + txtBarcodeLookup->Text );
+				pnlConsignMain->Color = clGreen;
+				Application->ProcessMessages();
+				Timer2->Enabled = true;
 			}
 			else
 			{
 				Memo1->Lines->Insert(0,Now().FormatString("yyyy-mm-dd hh:nn:ss") + " No Match Found for barcode " + txtBarcodeLookup->Text  );
+
+				pnlConsignMain->Color = clRed;
+				Application->ProcessMessages();
+				Timer2->Enabled = true;
+
 			}
 
 		   txtBarcodeLookup->Text = "";
@@ -613,6 +622,7 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 		rgpSelection->ItemIndex = SELECTION_ALL ;
 
 	}
+	AnsiString warehousecode = "";
 
 	int i = 0;
 	StatusBar1->Panels->Items[0]->Text = "Creating CSV for selected consignments...";
@@ -627,9 +637,21 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 
 	int ParcelSeq = 0;
 	UnicodeString LastKey = "";
+
 	while ( i < DBGrid2->SelectedRows->Count  )
 		{
+
 			Q->GotoBookmark(DBGrid2->SelectedRows->Items[i] );
+
+			if ( warehousecode.IsEmpty()) {
+				warehousecode = DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,2) ;
+			}
+
+			if ( warehousecode != DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,2) ) {
+				MessageDlg ( "You have more than 1 warehouse selected" , mtError , TMsgDlgButtons() << mbOK , 0 );
+				delete csv;
+				return;
+			}
 
 			AnsiString rec = "";
 
@@ -969,7 +991,7 @@ void __fastcall TfmConsign::actCheckDataExecute(TObject *Sender)
 			}
 
 			if ( DM->ConsignmentsViewWarehouseCode->IsNull ||
-				DM->ConsignmentsViewWarehouseCode->AsString.Length() == 0)
+				DM->ConsignmentsViewWarehouseCode->AsString.Length() < 3)
 			{
 				DBGrid2DblClick(Sender);
 
@@ -1467,3 +1489,11 @@ void __fastcall TfmConsign::UpdateConsignmentView(TObject *Sender)
 		}
 	}
 }
+void __fastcall TfmConsign::Timer2Timer(TObject *Sender)
+{
+	Timer2->Enabled = false;
+	pnlConsignMain->Color = clCream ;
+
+}
+//---------------------------------------------------------------------------
+

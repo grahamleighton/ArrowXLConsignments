@@ -6,8 +6,9 @@
 //---------------------------------------------------------------------------
 USEFORM("uConsign.cpp", fmConsign);
 USEFORM("uOptionSelect.cpp", fmOptSelect);
-USEFORM("dbConsign.cpp", DM); /* TDataModule: File Type */
 USEFORM("uProductTypes.cpp", fmProductTypes);
+USEFORM("dbConsign.cpp", DM); /* TDataModule: File Type */
+USEFORM("uNoMatch.cpp", fmNoMatch);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -17,6 +18,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		Application->CreateForm(__classid(TfmConsign), &fmConsign);
 		Application->CreateForm(__classid(TDM), &DM);
+		Application->CreateForm(__classid(TfmNoMatch), &fmNoMatch);
 		Application->Run();
 	}
 	catch (Exception &exception)

@@ -156,6 +156,7 @@ __published:	// IDE-managed Components
 	TBitBtn *BitBtn8;
 	TBitBtn *BitBtn9;
 	TDBNavigator *DBNavigator5;
+	TTimer *Timer2;
 	void __fastcall tabServicesShow(TObject *Sender);
 	void __fastcall tabConsignmentShow(TObject *Sender);
 	void __fastcall txtBarcodeLookupKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -183,6 +184,7 @@ __published:	// IDE-managed Components
 	void __fastcall Button16Click(TObject *Sender);
 
 	void __fastcall UpdateConsignmentView(TObject *Sender);
+	void __fastcall Timer2Timer(TObject *Sender);
 
 
 public:	// User declarations
