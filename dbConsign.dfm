@@ -603,7 +603,6 @@ object DM: TDM
     Top = 168
   end
   object DSVSuppliers: TADOQuery
-    Active = True
     Connection = DB
     CursorType = ctStatic
     Parameters = <>

@@ -26,6 +26,7 @@
 #include <IdCustomTCPServer.hpp>
 #include <IdTCPServer.hpp>
 #include <Vcl.Buttons.hpp>
+#include <Vcl.ImgList.hpp>
 //---------------------------------------------------------------------------
 class TfmConsign : public TForm
 {
@@ -56,17 +57,12 @@ __published:	// IDE-managed Components
 	TDBEdit *DBEdit7;
 	TDBEdit *DBEdit8;
 	TLabel *Label5;
-	TPanel *pnlConsignmentNav;
 	TActionList *ActionList1;
 	TDataSetInsert *actConsignmentInsert;
 	TDataSetDelete *actConsignmentDelete;
 	TDataSetEdit *actConsignmentEdit;
 	TDataSetPost *actConsignmentSave;
 	TDataSetCancel *actConsignmentCancel;
-	TButton *Button1;
-	TButton *Button2;
-	TButton *Button3;
-	TButton *Button4;
 	TDBNavigator *DBNavigator2;
 	TLabel *Label6;
 	TDBEdit *DBEdit9;
@@ -85,7 +81,6 @@ __published:	// IDE-managed Components
 	TLabel *Label14;
 	TDBText *DBText1;
 	TDBGrid *dbGridItems;
-	TDBNavigator *DBNavigator3;
 	TLabeledEdit *txtBarcodeLookup;
 	TGroupBox *grpItems;
 	TLabeledEdit *txtItemSearch;
@@ -111,7 +106,6 @@ __published:	// IDE-managed Components
 	TTabSheet *TabSheet1;
 	TMemo *Memo1;
 	TButton *Button7;
-	TBitBtn *BitBtn1;
 	TTabSheet *tabSuppliers;
 	TPanel *Panel1;
 	TPanel *Panel2;
@@ -140,6 +134,28 @@ __published:	// IDE-managed Components
 	TLabel *Label17;
 	TLabel *Label18;
 	TButton *Button16;
+	TDataSetFirst *actCItemsFirst;
+	TDataSetPrior *actCItemsPrior;
+	TDataSetNext *actCItemsNext;
+	TDataSetLast *actCItemsLast;
+	TDataSetInsert *actCItemsNew;
+	TDataSetDelete *actCItemsDelete;
+	TDataSetPost *actCItemsPost;
+	TDataSetCancel *actCItemsCancel;
+	TDataSetRefresh *actCItemsRefresh;
+	TGroupBox *GroupBox1;
+	TButton *Button1;
+	TButton *Button2;
+	TButton *Button3;
+	TButton *Button4;
+	TBitBtn *BitBtn1;
+	TDataSetEdit *actCIItemsEdit;
+	TDBNavigator *DBNavigator3;
+	TDBNavigator *DBNavigator4;
+	TBitBtn *BitBtn7;
+	TBitBtn *BitBtn8;
+	TBitBtn *BitBtn9;
+	TDBNavigator *DBNavigator5;
 	void __fastcall tabServicesShow(TObject *Sender);
 	void __fastcall tabConsignmentShow(TObject *Sender);
 	void __fastcall txtBarcodeLookupKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);

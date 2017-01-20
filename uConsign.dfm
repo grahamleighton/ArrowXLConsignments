@@ -2,8 +2,8 @@ object fmConsign: TfmConsign
   Left = 0
   Top = 0
   Caption = 'Arrow XL Metapack Consignment Management System Version : 1.0'
-  ClientHeight = 740
-  ClientWidth = 1303
+  ClientHeight = 796
+  ClientWidth = 1134
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27,7 +27,7 @@ object fmConsign: TfmConsign
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1303
+    Width = 1134
     Height = 89
     Align = alTop
     Alignment = taLeftJustify
@@ -41,11 +41,12 @@ object fmConsign: TfmConsign
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1303
     DesignSize = (
-      1303
+      1134
       89)
     object Image1: TImage
-      Left = 1145
+      Left = 976
       Top = -2
       Width = 157
       Height = 90
@@ -319,96 +320,45 @@ object fmConsign: TfmConsign
   object pnlMain: TPanel
     Left = 0
     Top = 89
-    Width = 1303
-    Height = 632
+    Width = 1134
+    Height = 688
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1303
+    ExplicitHeight = 632
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 1301
-      Height = 630
+      Width = 1132
+      Height = 686
       ActivePage = tabConsignments
       Align = alClient
       MultiLine = True
       TabOrder = 0
       TabPosition = tpLeft
+      ExplicitWidth = 1301
+      ExplicitHeight = 630
       object tabConsignment: TTabSheet
         Caption = 'Consignment'
         OnShow = tabConsignmentShow
-        object pnlConsignmentNav: TPanel
-          Left = 0
-          Top = 587
-          Width = 1268
-          Height = 35
-          Align = alBottom
-          TabOrder = 0
-          DesignSize = (
-            1268
-            35)
-          object Button1: TButton
-            Left = 9
-            Top = 6
-            Width = 75
-            Height = 25
-            Action = actConsignmentInsert
-            TabOrder = 0
-          end
-          object Button2: TButton
-            Left = 121
-            Top = 6
-            Width = 75
-            Height = 25
-            Action = actConsignmentEdit
-            TabOrder = 1
-          end
-          object Button3: TButton
-            Left = 234
-            Top = 6
-            Width = 75
-            Height = 25
-            Action = actConsignmentSave
-            TabOrder = 2
-          end
-          object Button4: TButton
-            Left = 346
-            Top = 6
-            Width = 75
-            Height = 25
-            Action = actConsignmentCancel
-            TabOrder = 3
-          end
-          object BitBtn1: TBitBtn
-            Left = 1115
-            Top = 6
-            Width = 75
-            Height = 25
-            Action = actConsignmentDelete
-            Anchors = [akTop, akRight]
-            Caption = '&Delete'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clRed
-            Font.Height = -15
-            Font.Name = 'Verdana'
-            Font.Style = []
-            ParentFont = False
-            TabOrder = 4
-          end
-        end
+        ExplicitWidth = 1268
+        ExplicitHeight = 622
         object pnlConsignMain: TPanel
           Left = 0
           Top = 0
-          Width = 1268
-          Height = 587
+          Width = 1099
+          Height = 678
           Align = alClient
           Color = clCream
           ParentBackground = False
-          TabOrder = 1
+          TabOrder = 0
+          ExplicitWidth = 1268
+          ExplicitHeight = 587
           DesignSize = (
-            1268
-            587)
+            1099
+            678)
           object Label1: TLabel
-            Left = 410
+            Left = 514
             Top = 17
             Width = 127
             Height = 18
@@ -453,24 +403,24 @@ object fmConsign: TfmConsign
             ParentFont = False
           end
           object Label9: TLabel
-            Left = 968
-            Top = 1
+            Left = 96
+            Top = 632
             Width = 115
             Height = 18
             Anchors = [akTop, akRight]
             Caption = 'Consignment #'
-            ExplicitLeft = 673
+            ExplicitLeft = 27
           end
           object DBText1: TDBText
-            Left = 1128
-            Top = 1
+            Left = 256
+            Top = 632
             Width = 62
             Height = 18
             Anchors = [akTop, akRight]
             AutoSize = True
             DataField = 'ConsignmentID'
             DataSource = DM.dsConsignments
-            ExplicitLeft = 833
+            ExplicitLeft = 187
           end
           object Label15: TLabel
             Left = 24
@@ -710,10 +660,11 @@ object fmConsign: TfmConsign
               Height = 25
               DataSource = DM.dsConsignments
               TabOrder = 9
+              Visible = False
             end
           end
           object DBEdit1: TDBEdit
-            Left = 543
+            Left = 647
             Top = 14
             Width = 76
             Height = 26
@@ -864,19 +815,11 @@ object fmConsign: TfmConsign
                 Top = 19
                 Width = 121
                 Height = 26
-                EditLabel.Width = 91
+                EditLabel.Width = 159
                 EditLabel.Height = 18
-                EditLabel.Caption = 'Item Search'
+                EditLabel.Caption = 'Item Search / Import'
                 TabOrder = 1
                 OnKeyDown = txtItemSearchKeyDown
-              end
-              object DBNavigator3: TDBNavigator
-                Left = 653
-                Top = 67
-                Width = 240
-                Height = 25
-                DataSource = DM.dsConsignmentItems
-                TabOrder = 2
               end
             end
             object pnlGroupItemsNav: TPanel
@@ -886,12 +829,66 @@ object fmConsign: TfmConsign
               Height = 41
               Align = alBottom
               TabOrder = 1
+              object DBNavigator3: TDBNavigator
+                Left = 13
+                Top = 5
+                Width = 212
+                Height = 25
+                DataSource = DM.dsConsignmentItems
+                VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+                TabOrder = 0
+              end
+              object DBNavigator4: TDBNavigator
+                Left = 776
+                Top = 6
+                Width = 105
+                Height = 25
+                DataSource = DM.dsConsignmentItems
+                VisibleButtons = [nbDelete]
+                TabOrder = 1
+              end
+              object BitBtn7: TBitBtn
+                Left = 375
+                Top = 5
+                Width = 75
+                Height = 25
+                Action = actCIItemsEdit
+                Caption = '&Edit'
+                TabOrder = 2
+              end
+              object BitBtn8: TBitBtn
+                Left = 463
+                Top = 5
+                Width = 75
+                Height = 25
+                Action = actCItemsPost
+                Caption = 'Save'
+                TabOrder = 3
+              end
+              object BitBtn9: TBitBtn
+                Left = 559
+                Top = 5
+                Width = 75
+                Height = 25
+                Action = actCItemsCancel
+                Caption = '&Cancel'
+                TabOrder = 4
+              end
+              object DBNavigator5: TDBNavigator
+                Left = 264
+                Top = 6
+                Width = 57
+                Height = 25
+                DataSource = DM.dsConsignmentItems
+                VisibleButtons = [nbInsert]
+                TabOrder = 5
+              end
             end
           end
           object DBLookupComboBox2: TDBLookupComboBox
             Left = 193
             Top = 17
-            Width = 193
+            Width = 315
             Height = 26
             DataField = 'ServiceCode'
             DataSource = DM.dsConsignments
@@ -904,33 +901,93 @@ object fmConsign: TfmConsign
             TabOrder = 7
             OnCloseUp = DBLookupComboBox2CloseUp
           end
+          object GroupBox1: TGroupBox
+            Left = 752
+            Top = 44
+            Width = 210
+            Height = 199
+            Caption = 'Consignments'
+            TabOrder = 8
+            object Button1: TButton
+              Left = 3
+              Top = 40
+              Width = 193
+              Height = 25
+              Action = actConsignmentInsert
+              TabOrder = 0
+            end
+            object Button2: TButton
+              Left = 3
+              Top = 114
+              Width = 193
+              Height = 25
+              Action = actConsignmentEdit
+              TabOrder = 1
+            end
+            object Button3: TButton
+              Left = 3
+              Top = 77
+              Width = 193
+              Height = 25
+              Action = actConsignmentSave
+              TabOrder = 2
+            end
+            object Button4: TButton
+              Left = 3
+              Top = 152
+              Width = 193
+              Height = 25
+              Action = actConsignmentCancel
+              TabOrder = 3
+            end
+          end
+          object BitBtn1: TBitBtn
+            Left = 755
+            Top = 309
+            Width = 193
+            Height = 25
+            Action = actConsignmentDelete
+            Caption = '&Delete Consignment'
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clRed
+            Font.Height = -15
+            Font.Name = 'Verdana'
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 9
+          end
         end
       end
       object tabConsignments: TTabSheet
         Caption = 'Consignments'
         ImageIndex = 1
         OnShow = tabConsignmentsShow
+        ExplicitWidth = 1268
+        ExplicitHeight = 622
         object pnlConsignmentsTop: TPanel
           Left = 0
           Top = 0
-          Width = 1268
+          Width = 1099
           Height = 41
           Align = alTop
           Caption = 'Consignments'
           TabOrder = 0
+          ExplicitWidth = 1268
         end
         object pnlConsignmentsMain: TPanel
           Left = 0
           Top = 41
-          Width = 1268
-          Height = 466
+          Width = 1099
+          Height = 522
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 1268
+          ExplicitHeight = 466
           object DBGrid2: TDBGrid
             Left = 1
             Top = 1
-            Width = 1266
-            Height = 464
+            Width = 1097
+            Height = 520
             Align = alClient
             DataSource = DM.dsConsignmentsView
             DrawingStyle = gdsGradient
@@ -1044,24 +1101,26 @@ object fmConsign: TfmConsign
         end
         object pnlConsignmentsBottom: TPanel
           Left = 0
-          Top = 507
-          Width = 1268
+          Top = 563
+          Width = 1099
           Height = 115
           Align = alBottom
           TabOrder = 2
+          ExplicitTop = 507
+          ExplicitWidth = 1268
           DesignSize = (
-            1268
+            1099
             115)
           object Label18: TLabel
-            Left = 506
-            Top = 6
+            Left = 426
+            Top = 26
             Width = 105
             Height = 18
             Caption = 'Show Supplier'
           end
           object cbxShowAll: TCheckBox
-            Left = 1155
-            Top = 6
+            Left = 986
+            Top = 25
             Width = 97
             Height = 17
             Anchors = [akTop, akRight]
@@ -1110,18 +1169,18 @@ object fmConsign: TfmConsign
             OnClick = Button6Click
           end
           object Button7: TButton
-            Left = 1047
-            Top = 6
-            Width = 75
+            Left = 848
+            Top = 22
+            Width = 105
             Height = 25
             Anchors = [akTop, akRight]
-            Caption = 'Refresh'
+            Caption = 'Refresh View'
             TabOrder = 5
             OnClick = Button7Click
           end
           object cmbSupplierFilter: TDBLookupComboBox
-            Left = 624
-            Top = 5
+            Left = 537
+            Top = 22
             Width = 185
             Height = 26
             KeyField = 'MetapackIndicator'
@@ -1131,10 +1190,10 @@ object fmConsign: TfmConsign
             OnCloseUp = cmbSupplierFilterCloseUp
           end
           object Button16: TButton
-            Left = 815
-            Top = 6
-            Width = 75
-            Height = 25
+            Left = 728
+            Top = 21
+            Width = 49
+            Height = 28
             Caption = 'Clear'
             TabOrder = 7
             OnClick = Button16Click
@@ -1145,13 +1204,17 @@ object fmConsign: TfmConsign
         Caption = 'Services'
         ImageIndex = 2
         OnShow = tabServicesShow
+        ExplicitWidth = 1268
+        ExplicitHeight = 622
         object pnlServiceNav: TPanel
           Left = 0
-          Top = 274
-          Width = 1268
+          Top = 330
+          Width = 1099
           Height = 348
           Align = alBottom
           TabOrder = 0
+          ExplicitTop = 274
+          ExplicitWidth = 1268
           object DBNavigator1: TDBNavigator
             Left = 16
             Top = 14
@@ -1164,15 +1227,17 @@ object fmConsign: TfmConsign
         object pnlServiceDetail: TPanel
           Left = 0
           Top = 0
-          Width = 1268
-          Height = 274
+          Width = 1099
+          Height = 330
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 1268
+          ExplicitHeight = 274
           object DBGrid1: TDBGrid
             Left = 1
             Top = 1
-            Width = 1266
-            Height = 272
+            Width = 1097
+            Height = 328
             Align = alClient
             DataSource = DM.dsSuppServices
             DrawingStyle = gdsGradient
@@ -1248,6 +1313,7 @@ object fmConsign: TfmConsign
               item
                 Expanded = False
                 FieldName = 'SupplierName'
+                Width = 64
                 Visible = True
               end>
           end
@@ -1256,11 +1322,13 @@ object fmConsign: TfmConsign
       object TabSheet1: TTabSheet
         Caption = 'Log'
         ImageIndex = 3
+        ExplicitWidth = 1268
+        ExplicitHeight = 622
         object Memo1: TMemo
           Left = 0
           Top = 0
-          Width = 1268
-          Height = 622
+          Width = 1099
+          Height = 678
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1270,27 +1338,35 @@ object fmConsign: TfmConsign
           ParentFont = False
           ReadOnly = True
           TabOrder = 0
+          ExplicitWidth = 1268
+          ExplicitHeight = 622
         end
       end
       object tabSuppliers: TTabSheet
         Caption = 'Suppliers'
         ImageIndex = 4
         OnShow = tabSuppliersShow
+        ExplicitWidth = 1268
+        ExplicitHeight = 622
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 1268
-          Height = 622
+          Width = 1099
+          Height = 678
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
+          ExplicitWidth = 1268
+          ExplicitHeight = 622
           object Panel2: TPanel
             Left = 1
-            Top = 475
-            Width = 1266
+            Top = 531
+            Width = 1097
             Height = 146
             Align = alBottom
             TabOrder = 0
+            ExplicitTop = 475
+            ExplicitWidth = 1266
             object Button8: TButton
               Left = 32
               Top = 22
@@ -1359,8 +1435,8 @@ object fmConsign: TfmConsign
           object DBGrid3: TDBGrid
             Left = 1
             Top = 1
-            Width = 1266
-            Height = 474
+            Width = 1097
+            Height = 530
             Align = alClient
             DataSource = DM.dsDSVSuppliers
             TabOrder = 1
@@ -1444,8 +1520,8 @@ object fmConsign: TfmConsign
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 721
-    Width = 1303
+    Top = 777
+    Width = 1134
     Height = 19
     Panels = <
       item
@@ -1477,20 +1553,22 @@ object fmConsign: TfmConsign
       item
         Width = 50
       end>
+    ExplicitTop = 721
+    ExplicitWidth = 1303
   end
   object ActionList1: TActionList
     Left = 552
     Top = 448
     object actConsignmentInsert: TDataSetInsert
       Category = 'Dataset'
-      Caption = '&New'
+      Caption = '&New Consignment'
       Hint = 'Insert'
       ImageIndex = 4
       DataSource = DM.dsConsignments
     end
     object actConsignmentDelete: TDataSetDelete
       Category = 'Dataset'
-      Caption = '&Delete'
+      Caption = '&Delete Consignment'
       Hint = 'Delete'
       ImageIndex = 5
       OnExecute = actConsignmentDeleteExecute
@@ -1498,21 +1576,21 @@ object fmConsign: TfmConsign
     end
     object actConsignmentEdit: TDataSetEdit
       Category = 'Dataset'
-      Caption = '&Edit'
+      Caption = '&Edit Consignment'
       Hint = 'Edit'
       ImageIndex = 6
       DataSource = DM.dsConsignments
     end
     object actConsignmentSave: TDataSetPost
       Category = 'Dataset'
-      Caption = 'S&ave'
+      Caption = 'S&ave Consignment'
       Hint = 'Post'
       ImageIndex = 7
       DataSource = DM.dsConsignments
     end
     object actConsignmentCancel: TDataSetCancel
       Category = 'Dataset'
-      Caption = '&Cancel'
+      Caption = '&Cancel Changes'
       Hint = 'Cancel'
       ImageIndex = 8
       DataSource = DM.dsConsignments
@@ -1609,6 +1687,75 @@ object fmConsign: TfmConsign
       ImageIndex = 9
       DataSource = DM.dsDSVSuppliers
     end
+    object actCItemsFirst: TDataSetFirst
+      Category = 'Dataset'
+      Caption = '<<'
+      Hint = 'First'
+      ImageIndex = 0
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsPrior: TDataSetPrior
+      Category = 'Dataset'
+      Caption = '<'
+      Hint = 'Prior'
+      ImageIndex = 1
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsNext: TDataSetNext
+      Category = 'Dataset'
+      Caption = '>'
+      Hint = 'Next'
+      ImageIndex = 2
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsLast: TDataSetLast
+      Category = 'Dataset'
+      Caption = '>>'
+      Hint = 'Last'
+      ImageIndex = 3
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsNew: TDataSetInsert
+      Category = 'Dataset'
+      Caption = '&New Item'
+      Hint = 'Insert'
+      ImageIndex = 4
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsDelete: TDataSetDelete
+      Category = 'Dataset'
+      Caption = '&Delete'
+      Hint = 'Delete'
+      ImageIndex = 5
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsPost: TDataSetPost
+      Category = 'Dataset'
+      Caption = 'Save'
+      Hint = 'Post'
+      ImageIndex = 7
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsCancel: TDataSetCancel
+      Category = 'Dataset'
+      Caption = '&Cancel'
+      Hint = 'Cancel'
+      ImageIndex = 8
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCItemsRefresh: TDataSetRefresh
+      Category = 'Dataset'
+      Caption = '&Refresh'
+      Hint = 'Refresh'
+      ImageIndex = 9
+      DataSource = DM.dsConsignmentItems
+    end
+    object actCIItemsEdit: TDataSetEdit
+      Category = 'Dataset'
+      Caption = '&Edit'
+      Hint = 'Edit'
+      ImageIndex = 6
+    end
   end
   object Timer1: TTimer
     Interval = 2000
@@ -1620,7 +1767,7 @@ object fmConsign: TfmConsign
     Bindings = <>
     DefaultPort = 2013
     OnExecute = IdTCPServer1Execute
-    Left = 792
-    Top = 280
+    Left = 1024
+    Top = 288
   end
 end
