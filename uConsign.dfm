@@ -2,8 +2,8 @@ object fmConsign: TfmConsign
   Left = 0
   Top = 0
   Caption = 'Arrow XL Metapack Consignment Management System Version : 1.4'
-  ClientHeight = 796
-  ClientWidth = 1134
+  ClientHeight = 741
+  ClientWidth = 1020
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27,7 +27,7 @@ object fmConsign: TfmConsign
   object pnlTop: TPanel
     Left = 0
     Top = 0
-    Width = 1134
+    Width = 1020
     Height = 89
     Align = alTop
     Alignment = taLeftJustify
@@ -41,11 +41,12 @@ object fmConsign: TfmConsign
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 1134
     DesignSize = (
-      1134
+      1020
       89)
     object Image1: TImage
-      Left = 976
+      Left = 862
       Top = -2
       Width = 157
       Height = 90
@@ -319,35 +320,43 @@ object fmConsign: TfmConsign
   object pnlMain: TPanel
     Left = 0
     Top = 89
-    Width = 1134
-    Height = 688
+    Width = 1020
+    Height = 633
     Align = alClient
     TabOrder = 1
+    ExplicitWidth = 1134
+    ExplicitHeight = 688
     object PageControl1: TPageControl
       Left = 1
       Top = 1
-      Width = 1132
-      Height = 686
-      ActivePage = tabConsignment
+      Width = 1018
+      Height = 631
+      ActivePage = tabConsignments
       Align = alClient
       MultiLine = True
       TabOrder = 0
       TabPosition = tpLeft
+      ExplicitWidth = 1132
+      ExplicitHeight = 686
       object tabConsignment: TTabSheet
         Caption = 'Consignment'
         OnShow = tabConsignmentShow
+        ExplicitWidth = 1099
+        ExplicitHeight = 678
         object pnlConsignMain: TPanel
           Left = 0
           Top = 0
-          Width = 1099
-          Height = 678
+          Width = 985
+          Height = 623
           Align = alClient
           Color = clCream
           ParentBackground = False
           TabOrder = 0
+          ExplicitWidth = 1099
+          ExplicitHeight = 678
           DesignSize = (
-            1099
-            678)
+            985
+            623)
           object Label1: TLabel
             Left = 514
             Top = 17
@@ -394,15 +403,16 @@ object fmConsign: TfmConsign
             ParentFont = False
           end
           object Label9: TLabel
-            Left = 16
+            Left = -98
             Top = 648
             Width = 115
             Height = 18
             Anchors = [akTop, akRight]
             Caption = 'Consignment #'
+            ExplicitLeft = 16
           end
           object DBText1: TDBText
-            Left = 176
+            Left = 62
             Top = 648
             Width = 62
             Height = 18
@@ -410,6 +420,7 @@ object fmConsign: TfmConsign
             AutoSize = True
             DataField = 'ConsignmentID'
             DataSource = DM.dsConsignments
+            ExplicitLeft = 176
           end
           object Label15: TLabel
             Left = 16
@@ -960,27 +971,32 @@ object fmConsign: TfmConsign
         Caption = 'Consignments'
         ImageIndex = 1
         OnShow = tabConsignmentsShow
+        ExplicitWidth = 1099
+        ExplicitHeight = 678
         object pnlConsignmentsTop: TPanel
           Left = 0
           Top = 0
-          Width = 1099
+          Width = 985
           Height = 41
           Align = alTop
           Caption = 'Consignments'
           TabOrder = 0
+          ExplicitWidth = 1099
         end
         object pnlConsignmentsMain: TPanel
           Left = 0
           Top = 41
-          Width = 1099
-          Height = 522
+          Width = 985
+          Height = 467
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 1099
+          ExplicitHeight = 522
           object DBGrid2: TDBGrid
             Left = 1
             Top = 1
-            Width = 1097
-            Height = 520
+            Width = 983
+            Height = 465
             Align = alClient
             DataSource = DM.dsConsignmentsView
             DrawingStyle = gdsGradient
@@ -1201,13 +1217,15 @@ object fmConsign: TfmConsign
         end
         object pnlConsignmentsBottom: TPanel
           Left = 0
-          Top = 563
-          Width = 1099
+          Top = 508
+          Width = 985
           Height = 115
           Align = alBottom
           TabOrder = 2
+          ExplicitTop = 563
+          ExplicitWidth = 1099
           DesignSize = (
-            1099
+            985
             115)
           object Label18: TLabel
             Left = 426
@@ -1217,8 +1235,8 @@ object fmConsign: TfmConsign
             Caption = 'Show Supplier'
           end
           object cbxShowAll: TCheckBox
-            Left = 986
-            Top = 25
+            Left = 664
+            Top = 55
             Width = 97
             Height = 17
             Anchors = [akTop, akRight]
@@ -1267,8 +1285,8 @@ object fmConsign: TfmConsign
             OnClick = Button6Click
           end
           object Button7: TButton
-            Left = 848
-            Top = 22
+            Left = 537
+            Top = 54
             Width = 105
             Height = 25
             Anchors = [akTop, akRight]
@@ -1302,13 +1320,17 @@ object fmConsign: TfmConsign
         Caption = 'Services'
         ImageIndex = 2
         OnShow = tabServicesShow
+        ExplicitWidth = 1099
+        ExplicitHeight = 678
         object pnlServiceNav: TPanel
           Left = 0
-          Top = 330
-          Width = 1099
+          Top = 275
+          Width = 985
           Height = 348
           Align = alBottom
           TabOrder = 0
+          ExplicitTop = 330
+          ExplicitWidth = 1099
           object DBNavigator1: TDBNavigator
             Left = 16
             Top = 14
@@ -1321,15 +1343,17 @@ object fmConsign: TfmConsign
         object pnlServiceDetail: TPanel
           Left = 0
           Top = 0
-          Width = 1099
-          Height = 330
+          Width = 985
+          Height = 275
           Align = alClient
           TabOrder = 1
+          ExplicitWidth = 1099
+          ExplicitHeight = 330
           object DBGrid1: TDBGrid
             Left = 1
             Top = 1
-            Width = 1097
-            Height = 328
+            Width = 983
+            Height = 273
             Align = alClient
             DataSource = DM.dsSuppServices
             DrawingStyle = gdsGradient
@@ -1414,11 +1438,13 @@ object fmConsign: TfmConsign
       object TabSheet1: TTabSheet
         Caption = 'Log'
         ImageIndex = 3
+        ExplicitWidth = 1099
+        ExplicitHeight = 678
         object Memo1: TMemo
           Left = 0
           Top = 0
-          Width = 1099
-          Height = 678
+          Width = 985
+          Height = 623
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1428,27 +1454,35 @@ object fmConsign: TfmConsign
           ParentFont = False
           ReadOnly = True
           TabOrder = 0
+          ExplicitWidth = 1099
+          ExplicitHeight = 678
         end
       end
       object tabSuppliers: TTabSheet
         Caption = 'Suppliers'
         ImageIndex = 4
         OnShow = tabSuppliersShow
+        ExplicitWidth = 1099
+        ExplicitHeight = 678
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 1099
-          Height = 678
+          Width = 985
+          Height = 623
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
+          ExplicitWidth = 1099
+          ExplicitHeight = 678
           object Panel2: TPanel
             Left = 1
-            Top = 531
-            Width = 1097
+            Top = 476
+            Width = 983
             Height = 146
             Align = alBottom
             TabOrder = 0
+            ExplicitTop = 531
+            ExplicitWidth = 1097
             object Button8: TButton
               Left = 32
               Top = 22
@@ -1517,8 +1551,8 @@ object fmConsign: TfmConsign
           object DBGrid3: TDBGrid
             Left = 1
             Top = 1
-            Width = 1097
-            Height = 530
+            Width = 983
+            Height = 475
             Align = alClient
             DataSource = DM.dsDSVSuppliers
             TabOrder = 1
@@ -1608,8 +1642,8 @@ object fmConsign: TfmConsign
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 777
-    Width = 1134
+    Top = 722
+    Width = 1020
     Height = 19
     Panels = <
       item

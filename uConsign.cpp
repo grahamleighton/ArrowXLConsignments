@@ -571,7 +571,7 @@ void __fastcall TfmConsign::rgpSelectionClick(TObject *Sender)
 
 void __fastcall TfmConsign::cbxInvertSelectionClick(TObject *Sender)
 {
-  	DM->ConsignmentsView->First();
+	DM->ConsignmentsView->First();
 			while ( ! DM->ConsignmentsView->Eof )
 				{
 					DBGrid2->SelectedRows->CurrentRowSelected =
@@ -586,6 +586,8 @@ void __fastcall TfmConsign::cbxInvertSelectionClick(TObject *Sender)
 void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 {
 	// main CSV creation routine
+
+
 
 	CheckedOK = false;
 	try
@@ -636,7 +638,7 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 			}
 			else
 			{
-				if (LastKey == DM->ConsignmentsViewCustomerReference->AsAnsiString.Trim()    ) {
+				if (LastKey == DM->ConsignmentsViewCustomerReference->AsAnsiString.Trim() + DM->ConsignmentsViewClientProductCode->AsString.Trim()      ) {
 					ParcelSeq++;
 				}
 				else
@@ -692,7 +694,7 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 					rec = StringReplace(rec , (AnsiString)(RemoveChars[rc+1]) , "" , TReplaceFlags() << rfReplaceAll );
 
 					rc++;
-                }
+				}
 
 
 
@@ -705,7 +707,8 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 			csv->Add(rec);
 
 
-			LastKey = DM->ConsignmentsViewCustomerReference->AsAnsiString.Trim();
+			LastKey = DM->ConsignmentsViewCustomerReference->AsAnsiString.Trim() +
+				DM->ConsignmentsViewClientProductCode->AsAnsiString.Trim() ;
 			i++;
 		}
 
@@ -781,11 +784,11 @@ void __fastcall TfmConsign::actCheckDataExecute(TObject *Sender)
 	StatusBar1->Panels->Items[0]->Text = "Checking selected consignments...";
 	Application->ProcessMessages();
 
+
 	TADOQuery *Q = DM->ConsignmentsView ;
 	while ( i < DBGrid2->SelectedRows->Count  )
 		{
 			Q->GotoBookmark(DBGrid2->SelectedRows->Items[i] );
-
 			// now perform any checks to make sure data is there
 
 			if ( DM->ConsignmentsViewClientProductCode->IsNull ||
@@ -996,7 +999,29 @@ void __fastcall TfmConsign::actCheckDataExecute(TObject *Sender)
 
 			if ( minWt > 0 || maxWt > 0 ) {
 				// check the weight of the item
+
+
+				if ( DM->ConsignmentsViewWeight->AsInteger >= minWt &&
+					DM->ConsignmentsViewWeight->AsInteger <= maxWt  ) {
+					;
+				}
+				else
+				{
+					DBGrid2DblClick(Sender);
+
+					dbGridItems->SetFocus() ;
+					MessageDlg ( "Item " + DM->ConsignmentsViewClientProductCode->AsAnsiString + " is outside the weight category for the service selected\n\nPlease amend service code" , mtWarning ,TMsgDlgButtons() << mbOK , 0 );
+					return;
+
+				}
+
+#if 0
+				DM->ConsignmentItems->Open();
+
+
+
 				DM->ConsignmentItems->First();
+
 
 				while (! DM->ConsignmentItems->Eof )
 					{
@@ -1016,7 +1041,9 @@ void __fastcall TfmConsign::actCheckDataExecute(TObject *Sender)
 							}
 						}
 						DM->ConsignmentItems->Next() ;
-                    }
+					}
+#endif
+
 
 			}
 

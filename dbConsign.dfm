@@ -547,7 +547,9 @@ object DM: TDM
       ''
       ''
       ''
-      'order by Consignments.ConsignmentID'
+      
+        'order by Consignments.CustomerReference,ConsignmentItems.ClientP' +
+        'roductCode'
       ''
       '')
     Left = 440
