@@ -1,0 +1,6 @@
+*.res
+*.vlb
+*.~*
+__history/
+Win32/
+Win32/Debug/
