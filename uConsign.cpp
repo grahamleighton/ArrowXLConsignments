@@ -1146,6 +1146,7 @@ void __fastcall TfmConsign::cmbSupplierFilterCloseUp(TObject *Sender)
 void __fastcall TfmConsign::Button16Click(TObject *Sender)
 {
 	cmbSupplierFilter->KeyValue = NULL;
+	UpdateConsignmentView(Sender);
 
 }
 //---------------------------------------------------------------------------

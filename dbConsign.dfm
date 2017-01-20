@@ -435,7 +435,6 @@ object DM: TDM
     Top = 232
   end
   object ConsignmentsView: TADOQuery
-    Active = True
     Connection = DB
     CursorType = ctStatic
     Parameters = <>
