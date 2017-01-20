@@ -326,6 +326,54 @@ object DM: TDM
       FixedChar = True
       Size = 2
     end
+    object OrderLookUpDD1Dim1: TIntegerField
+      FieldName = 'DD1Dim1'
+    end
+    object OrderLookUpDD1Dim2: TIntegerField
+      FieldName = 'DD1Dim2'
+    end
+    object OrderLookUpDD1Dim3: TIntegerField
+      FieldName = 'DD1Dim3'
+    end
+    object OrderLookUpDD1Weight: TIntegerField
+      FieldName = 'DD1Weight'
+    end
+    object OrderLookUpDD2Dim1: TIntegerField
+      FieldName = 'DD2Dim1'
+    end
+    object OrderLookUpDD2Dim2: TIntegerField
+      FieldName = 'DD2Dim2'
+    end
+    object OrderLookUpDD2Dim3: TIntegerField
+      FieldName = 'DD2Dim3'
+    end
+    object OrderLookUpDD2Weight: TIntegerField
+      FieldName = 'DD2Weight'
+    end
+    object OrderLookUpDD3Dim1: TIntegerField
+      FieldName = 'DD3Dim1'
+    end
+    object OrderLookUpDD3Dim2: TIntegerField
+      FieldName = 'DD3Dim2'
+    end
+    object OrderLookUpDD3Dim3: TIntegerField
+      FieldName = 'DD3Dim3'
+    end
+    object OrderLookUpDD3Weight: TIntegerField
+      FieldName = 'DD3Weight'
+    end
+    object OrderLookUpDD4Dim1: TIntegerField
+      FieldName = 'DD4Dim1'
+    end
+    object OrderLookUpDD4Dim2: TIntegerField
+      FieldName = 'DD4Dim2'
+    end
+    object OrderLookUpDD4Dim3: TIntegerField
+      FieldName = 'DD4Dim3'
+    end
+    object OrderLookUpDD4Weight: TIntegerField
+      FieldName = 'DD4Weight'
+    end
   end
   object cmdUpdateHDNL: TADOCommand
     CommandText = 
@@ -428,6 +476,54 @@ object DM: TDM
       FixedChar = True
       Size = 2
     end
+    object ItemLookupDD1Dim1: TIntegerField
+      FieldName = 'DD1Dim1'
+    end
+    object ItemLookupDD1Dim2: TIntegerField
+      FieldName = 'DD1Dim2'
+    end
+    object ItemLookupDD1Dim3: TIntegerField
+      FieldName = 'DD1Dim3'
+    end
+    object ItemLookupDD1Weight: TIntegerField
+      FieldName = 'DD1Weight'
+    end
+    object ItemLookupDD2Dim1: TIntegerField
+      FieldName = 'DD2Dim1'
+    end
+    object ItemLookupDD2Dim2: TIntegerField
+      FieldName = 'DD2Dim2'
+    end
+    object ItemLookupDD2Dim3: TIntegerField
+      FieldName = 'DD2Dim3'
+    end
+    object ItemLookupDD2Weight: TIntegerField
+      FieldName = 'DD2Weight'
+    end
+    object ItemLookupDD3Dim1: TIntegerField
+      FieldName = 'DD3Dim1'
+    end
+    object ItemLookupDD3Dim2: TIntegerField
+      FieldName = 'DD3Dim2'
+    end
+    object ItemLookupDD3Dim3: TIntegerField
+      FieldName = 'DD3Dim3'
+    end
+    object ItemLookupDD3Weight: TIntegerField
+      FieldName = 'DD3Weight'
+    end
+    object ItemLookupDD4Dim1: TIntegerField
+      FieldName = 'DD4Dim1'
+    end
+    object ItemLookupDD4Dim2: TIntegerField
+      FieldName = 'DD4Dim2'
+    end
+    object ItemLookupDD4Dim3: TIntegerField
+      FieldName = 'DD4Dim3'
+    end
+    object ItemLookupDD4Weight: TIntegerField
+      FieldName = 'DD4Weight'
+    end
   end
   object dsItemLookup: TDataSource
     DataSet = ItemLookup
@@ -517,36 +613,6 @@ object DM: TDM
     object ConsignmentsViewCreatedOn: TDateTimeField
       FieldName = 'CreatedOn'
     end
-    object ConsignmentsViewConsignmentItemID: TLargeintField
-      FieldName = 'ConsignmentItemID'
-      ReadOnly = True
-    end
-    object ConsignmentsViewConsignmentID_1: TLargeintField
-      FieldName = 'ConsignmentID_1'
-    end
-    object ConsignmentsViewWeight: TIntegerField
-      FieldName = 'Weight'
-    end
-    object ConsignmentsViewDimX: TIntegerField
-      FieldName = 'DimX'
-    end
-    object ConsignmentsViewDimY: TIntegerField
-      FieldName = 'DimY'
-    end
-    object ConsignmentsViewDimZ: TIntegerField
-      FieldName = 'DimZ'
-    end
-    object ConsignmentsViewClientProductDescription: TStringField
-      FieldName = 'ClientProductDescription'
-    end
-    object ConsignmentsViewClientProductCode: TStringField
-      FieldName = 'ClientProductCode'
-    end
-    object ConsignmentsViewHDNLProductCode: TStringField
-      FieldName = 'HDNLProductCode'
-      FixedChar = True
-      Size = 2
-    end
     object ConsignmentsViewAccount: TFloatField
       FieldName = 'Account'
     end
@@ -578,6 +644,40 @@ object DM: TDM
     end
     object ConsignmentsViewMaxWeight: TIntegerField
       FieldName = 'MaxWeight'
+    end
+    object ConsignmentsViewSupplierName: TWideStringField
+      FieldName = 'SupplierName'
+      Size = 255
+    end
+    object ConsignmentsViewConsignmentItemID: TLargeintField
+      FieldName = 'ConsignmentItemID'
+      ReadOnly = True
+    end
+    object ConsignmentsViewConsignmentID_1: TLargeintField
+      FieldName = 'ConsignmentID_1'
+    end
+    object ConsignmentsViewWeight: TIntegerField
+      FieldName = 'Weight'
+    end
+    object ConsignmentsViewDimX: TIntegerField
+      FieldName = 'DimX'
+    end
+    object ConsignmentsViewDimY: TIntegerField
+      FieldName = 'DimY'
+    end
+    object ConsignmentsViewDimZ: TIntegerField
+      FieldName = 'DimZ'
+    end
+    object ConsignmentsViewClientProductDescription: TStringField
+      FieldName = 'ClientProductDescription'
+    end
+    object ConsignmentsViewClientProductCode: TStringField
+      FieldName = 'ClientProductCode'
+    end
+    object ConsignmentsViewHDNLProductCode: TStringField
+      FieldName = 'HDNLProductCode'
+      FixedChar = True
+      Size = 2
     end
   end
   object dsConsignmentsView: TDataSource

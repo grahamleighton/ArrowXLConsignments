@@ -161,6 +161,118 @@ void __fastcall TfmConsign::txtBarcodeLookupKeyDown(TObject *Sender, WORD &Key, 
 */
 				DM->ConsignmentItems->Post() ;
 
+				if ( ! DM->OrderLookUpDD1Dim1->IsNull && DM->OrderLookUpDD1Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OrderLookUpCat->AsString + "/" + DM->OrderLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OrderLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OrderLookUpDD1Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OrderLookUpDD1Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OrderLookUpDD1Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OrderLookUpDD1Dim3->Value;
+
+					if ( ! DM->OrderLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OrderLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+				if ( ! DM->OrderLookUpDD2Dim1->IsNull && DM->OrderLookUpDD2Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OrderLookUpCat->AsString + "/" + DM->OrderLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OrderLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OrderLookUpDD2Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OrderLookUpDD2Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OrderLookUpDD2Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OrderLookUpDD2Dim3->Value;
+
+					if ( ! DM->OrderLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OrderLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+
+				if ( ! DM->OrderLookUpDD3Dim1->IsNull && DM->OrderLookUpDD3Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OrderLookUpCat->AsString + "/" + DM->OrderLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OrderLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OrderLookUpDD3Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OrderLookUpDD3Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OrderLookUpDD3Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OrderLookUpDD3Dim3->Value;
+
+					if ( ! DM->OrderLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OrderLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+
+				if ( ! DM->OrderLookUpDD4Dim1->IsNull && DM->OrderLookUpDD4Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OrderLookUpCat->AsString + "/" + DM->OrderLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OrderLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OrderLookUpDD4Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OrderLookUpDD4Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OrderLookUpDD4Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OrderLookUpDD4Dim3->Value;
+
+					if ( ! DM->OrderLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OrderLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+
+
 				Memo1->Lines->Insert(0,Now().FormatString("yyyy-mm-dd hh:nn:ss") + " Match Found for " + DM->ConsignmentsRecipientName->AsString );
 			}
 			else
@@ -217,10 +329,13 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 
 
 		if ( mr == mrOk && ! DM->ItemLookup->Eof  ) {
+
+
+
 				DM->ConsignmentItems->Insert() ;
 
 				DM->ConsignmentItemsClientProductCode->Value
-					= DM->ItemLookupCat->AsString + "/" + DM->ItemLookupOpt->AsString;
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
 				DM->ConsignmentItemsClientProductDescription->Value
 					= DM->ItemLookupDescription->Value;
 				DM->ConsignmentItemsConsignmentID->Value =
@@ -241,7 +356,120 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 				else
 					MessageDlg ( "Select HDNL code"  , mtInformation , TMsgDlgButtons() << mbOK , 0 );
 
+
 				DM->ConsignmentItems->Post() ;
+
+				if ( ! DM->ItemLookupDD1Dim1->IsNull && DM->ItemLookupDD1Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD1Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD1Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD1Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD1Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+				if ( ! DM->ItemLookupDD2Dim1->IsNull && DM->ItemLookupDD2Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD2Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD2Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD2Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD2Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+
+				if ( ! DM->ItemLookupDD3Dim1->IsNull && DM->ItemLookupDD3Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD3Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD3Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD3Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD3Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+
+				if ( ! DM->ItemLookupDD4Dim1->IsNull && DM->ItemLookupDD4Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD4Weight->Value / 1000;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD4Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD4Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD4Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+
 
 		}
 

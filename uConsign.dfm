@@ -1,7 +1,7 @@
 object fmConsign: TfmConsign
   Left = 0
   Top = 0
-  Caption = 'Arrow XL Metapack Consignment Management System Version : 1.0'
+  Caption = 'Arrow XL Metapack Consignment Management System Version : 1.4'
   ClientHeight = 796
   ClientWidth = 1134
   Color = clBtnFace
@@ -41,7 +41,6 @@ object fmConsign: TfmConsign
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1303
     DesignSize = (
       1134
       89)
@@ -324,25 +323,19 @@ object fmConsign: TfmConsign
     Height = 688
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 1303
-    ExplicitHeight = 632
     object PageControl1: TPageControl
       Left = 1
       Top = 1
       Width = 1132
       Height = 686
-      ActivePage = tabConsignments
+      ActivePage = tabConsignment
       Align = alClient
       MultiLine = True
       TabOrder = 0
       TabPosition = tpLeft
-      ExplicitWidth = 1301
-      ExplicitHeight = 630
       object tabConsignment: TTabSheet
         Caption = 'Consignment'
         OnShow = tabConsignmentShow
-        ExplicitWidth = 1268
-        ExplicitHeight = 622
         object pnlConsignMain: TPanel
           Left = 0
           Top = 0
@@ -352,8 +345,6 @@ object fmConsign: TfmConsign
           Color = clCream
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 1268
-          ExplicitHeight = 587
           DesignSize = (
             1099
             678)
@@ -403,35 +394,33 @@ object fmConsign: TfmConsign
             ParentFont = False
           end
           object Label9: TLabel
-            Left = 96
-            Top = 632
+            Left = 16
+            Top = 648
             Width = 115
             Height = 18
             Anchors = [akTop, akRight]
             Caption = 'Consignment #'
-            ExplicitLeft = 27
           end
           object DBText1: TDBText
-            Left = 256
-            Top = 632
+            Left = 176
+            Top = 648
             Width = 62
             Height = 18
             Anchors = [akTop, akRight]
             AutoSize = True
             DataField = 'ConsignmentID'
             DataSource = DM.dsConsignments
-            ExplicitLeft = 187
           end
           object Label15: TLabel
-            Left = 24
-            Top = 608
+            Left = 16
+            Top = 624
             Width = 121
             Height = 18
             Caption = 'CSV Created On'
           end
           object dbCSVCreated: TDBText
-            Left = 169
-            Top = 608
+            Left = 161
+            Top = 624
             Width = 108
             Height = 18
             AutoSize = True
@@ -725,22 +714,28 @@ object fmConsign: TfmConsign
           object grpItems: TGroupBox
             Left = 22
             Top = 431
-            Width = 907
-            Height = 161
+            Width = 940
+            Height = 187
             Caption = 'Items'
             TabOrder = 6
             object pnlGroupItemsTop: TPanel
               Left = 2
               Top = 20
-              Width = 903
-              Height = 98
+              Width = 936
+              Height = 124
               Align = alClient
               TabOrder = 0
+              ExplicitWidth = 903
+              ExplicitHeight = 98
+              DesignSize = (
+                936
+                124)
               object dbGridItems: TDBGrid
                 Left = 1
                 Top = 1
-                Width = 646
-                Height = 96
+                Width = 753
+                Height = 117
+                Anchors = [akLeft, akTop, akBottom]
                 DataSource = DM.dsConsignmentItems
                 DrawingStyle = gdsGradient
                 FixedColor = clSkyBlue
@@ -776,19 +771,20 @@ object fmConsign: TfmConsign
                     Expanded = False
                     FieldName = 'HDNLProductCode'
                     Title.Caption = 'HDNL'
-                    Width = 100
+                    Width = 50
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'ClientProductDescription'
                     Title.Caption = 'Description'
-                    Width = 400
+                    Width = 250
                     Visible = True
                   end
                   item
                     Expanded = False
                     FieldName = 'Weight'
+                    Width = 70
                     Visible = True
                   end
                   item
@@ -811,8 +807,8 @@ object fmConsign: TfmConsign
                   end>
               end
               object txtItemSearch: TLabeledEdit
-                Left = 688
-                Top = 19
+                Left = 760
+                Top = 59
                 Width = 121
                 Height = 26
                 EditLabel.Width = 159
@@ -824,11 +820,13 @@ object fmConsign: TfmConsign
             end
             object pnlGroupItemsNav: TPanel
               Left = 2
-              Top = 118
-              Width = 903
+              Top = 144
+              Width = 936
               Height = 41
               Align = alBottom
               TabOrder = 1
+              ExplicitTop = 118
+              ExplicitWidth = 903
               object DBNavigator3: TDBNavigator
                 Left = 13
                 Top = 5
@@ -962,8 +960,6 @@ object fmConsign: TfmConsign
         Caption = 'Consignments'
         ImageIndex = 1
         OnShow = tabConsignmentsShow
-        ExplicitWidth = 1268
-        ExplicitHeight = 622
         object pnlConsignmentsTop: TPanel
           Left = 0
           Top = 0
@@ -972,7 +968,6 @@ object fmConsign: TfmConsign
           Align = alTop
           Caption = 'Consignments'
           TabOrder = 0
-          ExplicitWidth = 1268
         end
         object pnlConsignmentsMain: TPanel
           Left = 0
@@ -981,8 +976,6 @@ object fmConsign: TfmConsign
           Height = 522
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 1268
-          ExplicitHeight = 466
           object DBGrid2: TDBGrid
             Left = 1
             Top = 1
@@ -1004,6 +997,11 @@ object fmConsign: TfmConsign
             Columns = <
               item
                 Expanded = False
+                FieldName = 'ConsignmentID'
+                Visible = False
+              end
+              item
+                Expanded = False
                 FieldName = 'WarehouseCode'
                 Title.Caption = 'Warehouse'
                 Visible = True
@@ -1012,89 +1010,191 @@ object fmConsign: TfmConsign
                 Expanded = False
                 FieldName = 'CustomerReference'
                 Title.Caption = 'Customer Ref'
-                Width = 64
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ClientProductCode'
+                Title.Caption = 'Item'
+                Width = 70
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'RecipientName'
-                Title.Caption = 'Name'
-                Width = 64
+                Title.Caption = 'Recipient'
+                Width = 200
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'RecipientAddress1'
-                Title.Caption = 'Address 1'
-                Width = 64
+                Title.Caption = 'Address'
+                Width = 140
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'RecipientAddress2'
                 Title.Caption = 'Address 2'
-                Width = 64
+                Width = 140
                 Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'RecipientAddress3'
+                Width = -1
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'RecipientAddress4'
+                Width = -1
+                Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'RecipientPostCode'
                 Title.Caption = 'Post Code'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
+                FieldName = 'DeliveryInstructions'
+                Title.Caption = 'Delivery Instructions'
+                Visible = False
+              end
+              item
+                Expanded = False
                 FieldName = 'PrimaryTelephone'
-                Title.Caption = 'Telephone'
-                Width = 64
+                Title.Caption = 'Primary Telephone'
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'ServiceCode_1'
+                Title.Caption = 'Service'
+                Width = 70
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ServiceCode'
                 Title.Caption = 'Service Code'
-                Width = 64
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'SecondTelephone'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'Email'
+                Width = 120
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CSVCreatedOn'
-                Title.Caption = 'CSV Created'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
-                FieldName = 'ClientProductCode'
-                Title.Caption = 'Item / Opt'
-                Width = 64
+                FieldName = 'CreatedOn'
                 Visible = True
               end
               item
                 Expanded = False
-                FieldName = 'HDNLProductCode'
-                Title.Caption = 'HDNL'
-                Width = 64
+                FieldName = 'Account'
+                Width = 70
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'TAC'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Identifier'
+                Width = 30
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'AccountName'
+                Width = 200
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Warehouse'
+                Width = 100
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'WarehouseCodeID'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'MinWeight'
+                Width = -1
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'MaxWeight'
+                Width = -1
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'SupplierName'
+                Width = -1
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'ConsignmentItemID'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'ConsignmentID_1'
+                Visible = False
+              end
+              item
+                Expanded = False
+                FieldName = 'Weight'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DimX'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DimY'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DimZ'
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'ClientProductDescription'
-                Title.Caption = 'Description'
-                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
-                FieldName = 'ConsignmentID'
-                Visible = False
-              end
-              item
-                Expanded = False
-                FieldName = 'CreatedOn'
-                Title.Caption = 'Created On'
-                Width = 200
+                FieldName = 'HDNLProductCode'
                 Visible = True
               end>
           end
@@ -1106,8 +1206,6 @@ object fmConsign: TfmConsign
           Height = 115
           Align = alBottom
           TabOrder = 2
-          ExplicitTop = 507
-          ExplicitWidth = 1268
           DesignSize = (
             1099
             115)
@@ -1204,8 +1302,6 @@ object fmConsign: TfmConsign
         Caption = 'Services'
         ImageIndex = 2
         OnShow = tabServicesShow
-        ExplicitWidth = 1268
-        ExplicitHeight = 622
         object pnlServiceNav: TPanel
           Left = 0
           Top = 330
@@ -1213,8 +1309,6 @@ object fmConsign: TfmConsign
           Height = 348
           Align = alBottom
           TabOrder = 0
-          ExplicitTop = 274
-          ExplicitWidth = 1268
           object DBNavigator1: TDBNavigator
             Left = 16
             Top = 14
@@ -1231,8 +1325,6 @@ object fmConsign: TfmConsign
           Height = 330
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 1268
-          ExplicitHeight = 274
           object DBGrid1: TDBGrid
             Left = 1
             Top = 1
@@ -1322,8 +1414,6 @@ object fmConsign: TfmConsign
       object TabSheet1: TTabSheet
         Caption = 'Log'
         ImageIndex = 3
-        ExplicitWidth = 1268
-        ExplicitHeight = 622
         object Memo1: TMemo
           Left = 0
           Top = 0
@@ -1338,16 +1428,12 @@ object fmConsign: TfmConsign
           ParentFont = False
           ReadOnly = True
           TabOrder = 0
-          ExplicitWidth = 1268
-          ExplicitHeight = 622
         end
       end
       object tabSuppliers: TTabSheet
         Caption = 'Suppliers'
         ImageIndex = 4
         OnShow = tabSuppliersShow
-        ExplicitWidth = 1268
-        ExplicitHeight = 622
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -1356,8 +1442,6 @@ object fmConsign: TfmConsign
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
-          ExplicitWidth = 1268
-          ExplicitHeight = 622
           object Panel2: TPanel
             Left = 1
             Top = 531
@@ -1365,8 +1449,6 @@ object fmConsign: TfmConsign
             Height = 146
             Align = alBottom
             TabOrder = 0
-            ExplicitTop = 475
-            ExplicitWidth = 1266
             object Button8: TButton
               Left = 32
               Top = 22
@@ -1475,6 +1557,7 @@ object fmConsign: TfmConsign
                 Expanded = False
                 FieldName = 'NetworkExitPoint'
                 Title.Caption = 'Network Exit Point'
+                Width = 64
                 Visible = True
               end
               item
@@ -1488,29 +1571,34 @@ object fmConsign: TfmConsign
                 Expanded = False
                 FieldName = 'ContactNumber'
                 Title.Caption = 'Contact Number'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'EmailAddress'
                 Title.Caption = 'Email Address'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'Address'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'PostCode'
                 Title.Caption = 'Post Code'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CollectionDates'
                 Title.Caption = 'Collection Dates'
+                Width = 64
                 Visible = True
               end>
           end
@@ -1553,8 +1641,6 @@ object fmConsign: TfmConsign
       item
         Width = 50
       end>
-    ExplicitTop = 721
-    ExplicitWidth = 1303
   end
   object ActionList1: TActionList
     Left = 552
