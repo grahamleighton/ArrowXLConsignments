@@ -5,6 +5,7 @@
 
 #include "dbConsign.h"
 #include <vcl.h>
+#include "uConsign.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma classgroup "System.Classes.TPersistent"
@@ -14,34 +15,6 @@ TDM *DM;
 __fastcall TDM::TDM(TComponent* Owner)
 	: TDataModule(Owner)
 {
-}
-//---------------------------------------------------------------------------
-void __fastcall TDM::ServicesServiceAvailableGetText(TField *Sender, UnicodeString &Text,
-          bool DisplayText)
-{
-	if ( ServicesServiceAvailable->IsNull || ServicesServiceAvailable->Value == 0 ) {
-			Text = "No";
-	}
-	else
-	{
-        Text = "Yes";
-    }
-}
-//---------------------------------------------------------------------------
-void __fastcall TDM::ServicesServiceAvailableSetText(TField *Sender, const UnicodeString Text)
-
-{
-	ServicesServiceAvailable->Value = 0;
-	if ( Text == "Yes" ) {
-			ServicesServiceAvailable->Value = 1;
-	}
-}
-//---------------------------------------------------------------------------
-void __fastcall TDM::ServicesServiceCodeSetText(TField *Sender, const UnicodeString Text)
-
-{
-	ServicesServiceCode->Value = Text.UpperCase() ;
-
 }
 //---------------------------------------------------------------------------
 void __fastcall TDM::ConsignmentItemsBeforeInsert(TDataSet *DataSet)
@@ -68,10 +41,10 @@ void __fastcall TDM::ConsignmentItemsAfterPost(TDataSet *DataSet)
 			}
 
 
-			cmdUpdateHDNL->Parameters->ParamByName("hdc")->Value =
+			cmdUpdateHDNL->Parameters->ParamByName("@hdc")->Value =
 				ConsignmentItemsHDNLProductCode->AsString;
-			cmdUpdateHDNL->Parameters->ParamByName("cat")->Value = cat;
-			cmdUpdateHDNL->Parameters->ParamByName("opt")->Value = opt;
+			cmdUpdateHDNL->Parameters->ParamByName("@cat")->Value = cat;
+			cmdUpdateHDNL->Parameters->ParamByName("@opt")->Value = opt;
 
 			cmdUpdateHDNL->Execute();
 
@@ -84,6 +57,27 @@ void __fastcall TDM::ConsignmentItemsAfterPost(TDataSet *DataSet)
 void __fastcall TDM::ConsignmentsNewRecord(TDataSet *DataSet)
 {
 	ConsignmentsWarehouseCode->AsAnsiString = "M";
+
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TDM::ConsignmentsViewAfterPost(TDataSet *DataSet)
+{
+	if ( Consignments->Active) {
+		TBookmark bmk = Consignments->GetBookmark() ;
+
+		Consignments->Requery();
+		Consignments->GotoBookmark(bmk);
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TDM::ConsignmentsAfterScroll(TDataSet *DataSet)
+{
+	fmConsign->Image3->Visible = false;
+	fmConsign->Image2->Visible = false;
+
 
 }
 //---------------------------------------------------------------------------

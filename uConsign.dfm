@@ -14,6 +14,7 @@ object fmConsign: TfmConsign
   Position = poMainFormCenter
   ShowHint = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 18
@@ -41,7 +42,6 @@ object fmConsign: TfmConsign
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1134
     DesignSize = (
       1020
       89)
@@ -324,8 +324,6 @@ object fmConsign: TfmConsign
     Height = 633
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 1134
-    ExplicitHeight = 688
     object PageControl1: TPageControl
       Left = 1
       Top = 1
@@ -336,26 +334,21 @@ object fmConsign: TfmConsign
       MultiLine = True
       TabOrder = 0
       TabPosition = tpLeft
-      ExplicitWidth = 1132
-      ExplicitHeight = 686
       object tabConsignment: TTabSheet
         Caption = 'Consignment'
         OnShow = tabConsignmentShow
-        ExplicitWidth = 1099
-        ExplicitHeight = 678
         object pnlConsignMain: TPanel
           Left = 0
           Top = 0
-          Width = 985
+          Width = 960
           Height = 623
           Align = alClient
           Color = clCream
           ParentBackground = False
           TabOrder = 0
-          ExplicitWidth = 1099
-          ExplicitHeight = 678
+          ExplicitTop = -1
           DesignSize = (
-            985
+            960
             623)
           object Label1: TLabel
             Left = 514
@@ -403,7 +396,7 @@ object fmConsign: TfmConsign
             ParentFont = False
           end
           object Label9: TLabel
-            Left = -98
+            Left = -123
             Top = 648
             Width = 115
             Height = 18
@@ -412,7 +405,7 @@ object fmConsign: TfmConsign
             ExplicitLeft = 16
           end
           object DBText1: TDBText
-            Left = 62
+            Left = 37
             Top = 648
             Width = 62
             Height = 18
@@ -420,7 +413,6 @@ object fmConsign: TfmConsign
             AutoSize = True
             DataField = 'ConsignmentID'
             DataSource = DM.dsConsignments
-            ExplicitLeft = 176
           end
           object Label15: TLabel
             Left = 16
@@ -456,6 +448,72 @@ object fmConsign: TfmConsign
             Font.Name = 'Verdana'
             Font.Style = []
             ParentFont = False
+          end
+          object Image3: TImage
+            Left = 231
+            Top = 79
+            Width = 32
+            Height = 32
+            AutoSize = True
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+              00200806000000737A7AF40000001974455874536F6674776172650041646F62
+              6520496D616765526561647971C9653C0000017F4944415478DAC597CD51C330
+              1085E50A48072901E7CEC1A98074804BC839177CCA391D103A3015E003774409
+              740015C06EB20A8A46B2575A0BBD991D65E2997D9F56FF95626AFFD6DC42B381
+              68287C1A28FADDDDF0C1C95B318C1FA0D942D45C5892863800C8731200182FA1
+              398EF4962BAC480B209F6C0030BF27F385D0DCE88B205E2601A8E4C7998C5DB5
+              EE905C0150CFFB4CE6461BBB1217001A739C3873953D241C8EDACC091BE055C9
+              271C570300AC2F0099C65D53B481EFA7F96000DE55FC3A9F326FC0E01B723F05
+              20347C5F55B4C3E91CE6E68F11881A011EE14797D1FC469D37235F85BB6AC6C9
+              176B8E1A10E0879158A9F13992627ED21480B6AA134A966C3E05709538905464
+              1E05E0492E36670F81C7E400B1959A7300BC10AE52CD0D006719062124E68A96
+              2177239A65CC1D75B15BB1BDC74BCD5175CA618410783BEE85E6E7C38800725E
+              C342FA3B8E09A2DC858400CA5EC908A2DCA5D48228772D772A8110FFFF30B120
+              CA3DCD1C10C9E3B4F3F53A0AC002C9F23CFF051958F76D709ECFE70000000049
+              454E44AE426082}
+            Visible = False
+          end
+          object Image2: TImage
+            Left = 416
+            Top = 56
+            Width = 32
+            Height = 32
+            AutoSize = True
+            Picture.Data = {
+              0954506E67496D61676589504E470D0A1A0A0000000D49484452000000200000
+              0020080300000044A48AC6000000ED504C5445FFFFFFFBFBFBE9E9E9C8504AFC
+              FFFFCC514AD4514ADB2F1CD0514AF1F1F1DE441AEAEAEADF4A19EEEEEEDDBBBC
+              D8514AFCF1F0F2C9C7E1E1E1DC361BDD3E1AF3C9BBDB2B1CCD4C45DE4113E45F
+              4AC74A43DB2E0CBE6C66E67F65DB4B45E14F28F9E4E3CF2D23E04839AB1A11B7
+              342DBA3E36DF5418EC9364AF241BE67138E4AFACFDECE1C5524DDE3A2FE0500E
+              F2B1AED91F0CED968CB5361CE56E51C86152E45F4CE24F3EE5BFB7E36E69F4CE
+              BADD5B11E15027E46134E35F29F0A888DC3109F2B29FF5C4A9C5270BBA3C29E0
+              8A86B81910DE7B76C1362ED8908BCB6F68BA453CE46640F4C2B6CF443DD76F69
+              483AC494000002BB4944415478DA5D93DB4F13411487CFD9ED6677CA76972D94
+              922211B0052B28C20B3CF840140D0FC6BF96186350793142A21824B5DA7253B0
+              82AD2DDB0E4CEBB633CE6E6F8479D89CD9DF3767E6DC10FA8B28AC6DE8ACFF13
+              7B46181A4DB407E1C255818310378008BF1C4CDCC69C34A7C58F02E512BA0620
+              2AE6F2BED09AFE56843C4C6EB94E45F40044EE0C733C4A77DC65278552AA5901
+              816DFD5E43CBA7B3BD97A5B3294FFF1AF5091F50A48E47102FF680D8394C0A3D
+              67950320C222D1E4060CCF178A6E20DBB1C46E0956F7CB17C82580861E53F3CA
+              1ADB70589000D2209555F28AA75AC5AA100891DA5A2B538CDE7F23C0B91C953E
+              D84005F0C95E3936AB6E708E40F425781B9D7FED3B77B80DAE52F1CD67BBE5C7
+              B05DE548BCE9D18CAB4BB70111815A60588FDE37ECD9B39C8691DA8BAD062376
+              E7A0036D7DE49FCB88BEFC9263843E3F36726043E768B0AC78035C98AE4FAC3B
+              487407196832B8DCD3F5AE9ED0E4633D20A252451247648B3BDAB909B8BCDED1
+              8B40E39E0C58889F6D0016DF1199920EB07400027069A703C82B864E5D05CCEA
+              4037D7B14B8B02B76FFD0DAEA88FDBC69F069DAA0F7DE8D7C229F0F0C048DD3D
+              41246CF970E200439404E7ADF4764030B329EE1C4F7DE488EA2C664D9CC9B5F5
+              A4210247B1F0A5A06991D1FC548F9FB78CD14F6DBD6942DE47430F7F97ECF849
+              D5AF055B1059D3504E85AFD7C1A8578A8063D3BB6A02F7FC62C97247ADAC3977
+              786225730980828CBF24759AAE965B54961B88E770D535E7E860860631987ACC
+              DAA5764BA9905AD07291DA4ADE734DA371D50E320C7A9DDA5A6A53E19DA635D8
+              CA37D56B75874400B5136777371521BA6D6FB0D88C9A05D7F477549636DDFA5E
+              1CB8EAB6BDFC9ACC7C20F2AAAC2040A2D84AE117CA457F70FC4E0536B8505086
+              CF215EE289CF172454BB39BC06787278C7E0972B425A88DE1CDE0EE3AF1034AF
+              8DFF7FC932386207A080310000000049454E44AE426082}
+            Visible = False
           end
           object grpCustomerDetails: TGroupBox
             Left = 23
@@ -685,13 +743,14 @@ object fmConsign: TfmConsign
           object DBEdit2: TDBEdit
             Left = 23
             Top = 85
-            Width = 226
+            Width = 202
             Height = 26
             CharCase = ecUpperCase
             Color = clWhite
             DataField = 'CustomerReference'
             DataSource = DM.dsConsignments
             TabOrder = 3
+            OnExit = DBEdit2Exit
           end
           object DBLookupComboBox1: TDBLookupComboBox
             Left = 271
@@ -736,8 +795,6 @@ object fmConsign: TfmConsign
               Height = 124
               Align = alClient
               TabOrder = 0
-              ExplicitWidth = 903
-              ExplicitHeight = 98
               DesignSize = (
                 936
                 124)
@@ -801,7 +858,6 @@ object fmConsign: TfmConsign
                   item
                     Expanded = False
                     FieldName = 'DimX'
-                    Width = 64
                     Visible = True
                   end
                   item
@@ -836,8 +892,6 @@ object fmConsign: TfmConsign
               Height = 41
               Align = alBottom
               TabOrder = 1
-              ExplicitTop = 118
-              ExplicitWidth = 903
               object DBNavigator3: TDBNavigator
                 Left = 13
                 Top = 5
@@ -971,37 +1025,32 @@ object fmConsign: TfmConsign
         Caption = 'Consignments'
         ImageIndex = 1
         OnShow = tabConsignmentsShow
-        ExplicitWidth = 1099
-        ExplicitHeight = 678
         object pnlConsignmentsTop: TPanel
           Left = 0
           Top = 0
-          Width = 985
+          Width = 960
           Height = 41
           Align = alTop
           Caption = 'Consignments'
           TabOrder = 0
-          ExplicitWidth = 1099
         end
         object pnlConsignmentsMain: TPanel
           Left = 0
           Top = 41
-          Width = 985
+          Width = 960
           Height = 467
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 1099
-          ExplicitHeight = 522
           object DBGrid2: TDBGrid
             Left = 1
             Top = 1
-            Width = 983
+            Width = 958
             Height = 465
             Align = alClient
             DataSource = DM.dsConsignmentsView
             DrawingStyle = gdsGradient
             FixedColor = clSkyBlue
-            Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
             ReadOnly = True
             TabOrder = 0
             TitleFont.Charset = DEFAULT_CHARSET
@@ -1026,6 +1075,7 @@ object fmConsign: TfmConsign
                 Expanded = False
                 FieldName = 'CustomerReference'
                 Title.Caption = 'Customer Ref'
+                Width = 64
                 Visible = True
               end
               item
@@ -1059,19 +1109,18 @@ object fmConsign: TfmConsign
               item
                 Expanded = False
                 FieldName = 'RecipientAddress3'
-                Width = -1
                 Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'RecipientAddress4'
-                Width = -1
                 Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'RecipientPostCode'
                 Title.Caption = 'Post Code'
+                Width = 64
                 Visible = True
               end
               item
@@ -1084,6 +1133,7 @@ object fmConsign: TfmConsign
                 Expanded = False
                 FieldName = 'PrimaryTelephone'
                 Title.Caption = 'Primary Telephone'
+                Width = 64
                 Visible = True
               end
               item
@@ -1113,11 +1163,13 @@ object fmConsign: TfmConsign
               item
                 Expanded = False
                 FieldName = 'CSVCreatedOn'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'CreatedOn'
+                Width = 64
                 Visible = True
               end
               item
@@ -1158,19 +1210,16 @@ object fmConsign: TfmConsign
               item
                 Expanded = False
                 FieldName = 'MinWeight'
-                Width = -1
                 Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'MaxWeight'
-                Width = -1
                 Visible = False
               end
               item
                 Expanded = False
                 FieldName = 'SupplierName'
-                Width = -1
                 Visible = False
               end
               item
@@ -1186,31 +1235,37 @@ object fmConsign: TfmConsign
               item
                 Expanded = False
                 FieldName = 'Weight'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DimX'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DimY'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'DimZ'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'ClientProductDescription'
+                Width = 64
                 Visible = True
               end
               item
                 Expanded = False
                 FieldName = 'HDNLProductCode'
+                Width = 64
                 Visible = True
               end>
           end
@@ -1218,24 +1273,29 @@ object fmConsign: TfmConsign
         object pnlConsignmentsBottom: TPanel
           Left = 0
           Top = 508
-          Width = 985
+          Width = 960
           Height = 115
           Align = alBottom
           TabOrder = 2
-          ExplicitTop = 563
-          ExplicitWidth = 1099
           DesignSize = (
-            985
+            960
             115)
           object Label18: TLabel
             Left = 426
-            Top = 26
+            Top = 28
             Width = 105
             Height = 18
             Caption = 'Show Supplier'
           end
+          object Label19: TLabel
+            Left = 786
+            Top = 28
+            Width = 40
+            Height = 18
+            Caption = 'From'
+          end
           object cbxShowAll: TCheckBox
-            Left = 664
+            Left = 639
             Top = 55
             Width = 97
             Height = 17
@@ -1285,7 +1345,7 @@ object fmConsign: TfmConsign
             OnClick = Button6Click
           end
           object Button7: TButton
-            Left = 537
+            Left = 512
             Top = 54
             Width = 105
             Height = 25
@@ -1296,9 +1356,11 @@ object fmConsign: TfmConsign
           end
           object cmbSupplierFilter: TDBLookupComboBox
             Left = 537
-            Top = 22
+            Top = 24
             Width = 185
             Height = 26
+            DropDownRows = 15
+            DropDownWidth = 200
             KeyField = 'MetapackIndicator'
             ListField = 'SupplierName'
             ListSource = DM.dsDSVSuppliers
@@ -1307,12 +1369,21 @@ object fmConsign: TfmConsign
           end
           object Button16: TButton
             Left = 728
-            Top = 21
+            Top = 23
             Width = 49
             Height = 28
             Caption = 'Clear'
             TabOrder = 7
             OnClick = Button16Click
+          end
+          object DateTimePicker1: TDateTimePicker
+            Left = 832
+            Top = 24
+            Width = 122
+            Height = 26
+            Date = 42760.410980393520000000
+            Time = 42760.410980393520000000
+            TabOrder = 8
           end
         end
       end
@@ -1320,17 +1391,13 @@ object fmConsign: TfmConsign
         Caption = 'Services'
         ImageIndex = 2
         OnShow = tabServicesShow
-        ExplicitWidth = 1099
-        ExplicitHeight = 678
         object pnlServiceNav: TPanel
           Left = 0
           Top = 275
-          Width = 985
+          Width = 960
           Height = 348
           Align = alBottom
           TabOrder = 0
-          ExplicitTop = 330
-          ExplicitWidth = 1099
           object DBNavigator1: TDBNavigator
             Left = 16
             Top = 14
@@ -1343,16 +1410,14 @@ object fmConsign: TfmConsign
         object pnlServiceDetail: TPanel
           Left = 0
           Top = 0
-          Width = 985
+          Width = 960
           Height = 275
           Align = alClient
           TabOrder = 1
-          ExplicitWidth = 1099
-          ExplicitHeight = 330
           object DBGrid1: TDBGrid
             Left = 1
             Top = 1
-            Width = 983
+            Width = 958
             Height = 273
             Align = alClient
             DataSource = DM.dsSuppServices
@@ -1438,12 +1503,10 @@ object fmConsign: TfmConsign
       object TabSheet1: TTabSheet
         Caption = 'Log'
         ImageIndex = 3
-        ExplicitWidth = 1099
-        ExplicitHeight = 678
         object Memo1: TMemo
           Left = 0
           Top = 0
-          Width = 985
+          Width = 960
           Height = 623
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
@@ -1454,35 +1517,27 @@ object fmConsign: TfmConsign
           ParentFont = False
           ReadOnly = True
           TabOrder = 0
-          ExplicitWidth = 1099
-          ExplicitHeight = 678
         end
       end
       object tabSuppliers: TTabSheet
         Caption = 'Suppliers'
         ImageIndex = 4
         OnShow = tabSuppliersShow
-        ExplicitWidth = 1099
-        ExplicitHeight = 678
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 985
+          Width = 960
           Height = 623
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
-          ExplicitWidth = 1099
-          ExplicitHeight = 678
           object Panel2: TPanel
             Left = 1
             Top = 476
-            Width = 983
+            Width = 958
             Height = 146
             Align = alBottom
             TabOrder = 0
-            ExplicitTop = 531
-            ExplicitWidth = 1097
             object Button8: TButton
               Left = 32
               Top = 22
@@ -1551,7 +1606,7 @@ object fmConsign: TfmConsign
           object DBGrid3: TDBGrid
             Left = 1
             Top = 1
-            Width = 983
+            Width = 958
             Height = 475
             Align = alClient
             DataSource = DM.dsDSVSuppliers
@@ -1635,6 +1690,568 @@ object fmConsign: TfmConsign
                 Width = 64
                 Visible = True
               end>
+          end
+        end
+      end
+      object TabSheet2: TTabSheet
+        Caption = 'Order Search'
+        ImageIndex = 5
+        object Panel3: TPanel
+          Left = 0
+          Top = 0
+          Width = 960
+          Height = 65
+          Align = alTop
+          TabOrder = 0
+          object LabeledEdit1: TLabeledEdit
+            Left = 16
+            Top = 32
+            Width = 121
+            Height = 26
+            EditLabel.Width = 157
+            EditLabel.Height = 18
+            EditLabel.Caption = 'Account / Agency No'
+            TabOrder = 0
+            OnKeyDown = LabeledEdit1KeyDown
+          end
+          object BitBtn2: TBitBtn
+            Left = 152
+            Top = 32
+            Width = 75
+            Height = 25
+            Caption = 'Search'
+            TabOrder = 1
+            OnClick = BitBtn2Click
+          end
+          object Button17: TButton
+            Left = 352
+            Top = 24
+            Width = 212
+            Height = 25
+            Caption = 'Use Selected Barcode'
+            TabOrder = 2
+            OnClick = Button17Click
+          end
+        end
+        object Panel4: TPanel
+          Left = 0
+          Top = 65
+          Width = 960
+          Height = 558
+          Align = alClient
+          Caption = 'Panel4'
+          TabOrder = 1
+          object DBGrid4: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 958
+            Height = 556
+            Align = alClient
+            DataSource = DM.dsOrderSearch
+            FixedColor = clMoneyGreen
+            Options = [dgTitles, dgIndicator, dgColumnResize, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+            ReadOnly = True
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -15
+            TitleFont.Name = 'Verdana'
+            TitleFont.Style = []
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'Parcel'
+                Width = 250
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Agency'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Invoice'
+                Width = 70
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CustomerName'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Address1'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Address2'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Cat'
+                Width = 60
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Opt'
+                Width = 30
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Description'
+                Width = 250
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Address3'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Address4'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Address5'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Address6'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Postcode'
+                Width = 64
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Phone'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DateLoaded'
+                Width = 104
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'Price'
+                Width = 64
+                Visible = True
+              end>
+          end
+        end
+      end
+      object TabSheet3: TTabSheet
+        Caption = 'Order Import'
+        ImageIndex = 6
+        TabVisible = False
+      end
+      object tabDDOrders: TTabSheet
+        Caption = 'DD Orders'
+        ImageIndex = 7
+        OnExit = tabDDOrdersExit
+        object Panel5: TPanel
+          Left = 0
+          Top = 0
+          Width = 960
+          Height = 129
+          Align = alTop
+          TabOrder = 0
+          object Label20: TLabel
+            Left = 32
+            Top = 16
+            Width = 58
+            Height = 18
+            Caption = 'Supplier'
+          end
+          object Label21: TLabel
+            Left = 32
+            Top = 56
+            Width = 54
+            Height = 18
+            Caption = 'Service'
+          end
+          object DBLookupComboBox3: TDBLookupComboBox
+            Left = 104
+            Top = 16
+            Width = 177
+            Height = 26
+            DropDownRows = 15
+            DropDownWidth = 300
+            KeyField = 'SupplierCode'
+            ListField = 'SupplierName'
+            ListSource = DM.dsDSVSuppliers
+            TabOrder = 0
+          end
+          object Button18: TButton
+            Left = 304
+            Top = 16
+            Width = 75
+            Height = 25
+            Caption = 'View'
+            TabOrder = 1
+            OnClick = Button18Click
+          end
+          object Button19: TButton
+            Left = 624
+            Top = 16
+            Width = 193
+            Height = 25
+            Caption = 'Create Consignment'
+            TabOrder = 2
+            OnClick = Button19Click
+          end
+          object DBLookupComboBox4: TDBLookupComboBox
+            Left = 104
+            Top = 57
+            Width = 315
+            Height = 26
+            DropDownRows = 20
+            DropDownWidth = 600
+            KeyField = 'WarehouseCodeID'
+            ListField = 'SupplierName;AccountName'
+            ListFieldIndex = 1
+            ListSource = DM.dsSupplierServices
+            TabOrder = 3
+          end
+        end
+        object Panel6: TPanel
+          Left = 0
+          Top = 582
+          Width = 960
+          Height = 41
+          Align = alBottom
+          TabOrder = 1
+        end
+        object Panel7: TPanel
+          Left = 0
+          Top = 129
+          Width = 960
+          Height = 453
+          Align = alClient
+          TabOrder = 2
+          object DBGrid5: TDBGrid
+            Left = 1
+            Top = 1
+            Width = 958
+            Height = 451
+            Align = alClient
+            DataSource = DM.dsDDOrders
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'Verdana'
+            Font.Style = []
+            Options = [dgTitles, dgColumnResize, dgColLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect, dgTitleClick, dgTitleHotTrack]
+            ParentFont = False
+            ReadOnly = True
+            TabOrder = 0
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'Verdana'
+            TitleFont.Style = []
+            OnTitleClick = DBGrid5TitleClick
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'ORDER_KEY'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DD_SUPPLIER_CODE'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ACCOUNT_REF_NO'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'INVOICE_NO'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DATE_OF_ORDER'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CATALOGUE_NUMBER'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'OPTION_NUMBER'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ITEM_DESCRIPTION'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'OPTION_DESCRIPTION'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DD_BARCODE_NO'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_ADDR1'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_ADDR2'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_ADDR3'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_ADDR4'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_ADDR5'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_ADDR6'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_PCODE'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CONTACT_PHONE_NO'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ALT_PHONE_NO'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_DATE'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_DATE_TP'
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DELIVERY_DATE_TS'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'TP94_TSTAMP'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ORIG_COLLECT_DATE'
+                Width = 120
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DD_BARCODE_ORIG'
+                Width = 120
+                Visible = True
+              end>
+          end
+        end
+      end
+      object TabSheet4: TTabSheet
+        Caption = 'Order Import'
+        ImageIndex = 8
+        object Panel8: TPanel
+          Left = 0
+          Top = 0
+          Width = 960
+          Height = 41
+          Align = alTop
+          TabOrder = 0
+          object Button20: TButton
+            Left = 8
+            Top = 10
+            Width = 75
+            Height = 25
+            Caption = 'Import...'
+            TabOrder = 0
+            OnClick = Button20Click
+          end
+          object Button21: TButton
+            Left = 128
+            Top = 11
+            Width = 75
+            Height = 25
+            Caption = 'Process..'
+            TabOrder = 1
+            OnClick = Button21Click
+          end
+          object Button22: TButton
+            Left = 280
+            Top = 11
+            Width = 129
+            Height = 25
+            Caption = 'Check Selected'
+            TabOrder = 2
+            OnClick = Button22Click
+          end
+          object Button23: TButton
+            Left = 456
+            Top = 10
+            Width = 169
+            Height = 25
+            Caption = 'Process Selected'
+            TabOrder = 3
+            OnClick = Button23Click
+          end
+        end
+        object Panel9: TPanel
+          Left = 0
+          Top = 582
+          Width = 960
+          Height = 41
+          Align = alBottom
+          Caption = 'Import the Arrow XL file created from DD Track'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlue
+          Font.Height = -15
+          Font.Name = 'Verdana'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 1
+        end
+        object Panel10: TPanel
+          Left = 0
+          Top = 41
+          Width = 960
+          Height = 541
+          Align = alClient
+          Caption = 'Panel10'
+          TabOrder = 2
+          object ListView1: TListView
+            Left = 1
+            Top = 1
+            Width = 958
+            Height = 539
+            Align = alClient
+            Columns = <
+              item
+                Caption = 'Barcode'
+                Width = 140
+              end
+              item
+                Caption = 'Supplier'
+                Width = 70
+              end
+              item
+                Caption = 'Agency'
+                Width = 90
+              end
+              item
+                Caption = 'Invoice'
+                Width = 70
+              end
+              item
+                Caption = 'CatNo'
+                Width = 70
+              end
+              item
+                Caption = 'Description'
+                Width = 150
+              end
+              item
+                Caption = 'Match'
+                Width = 70
+              end
+              item
+                Caption = 'Weight'
+              end
+              item
+                Caption = 'Parts'
+              end
+              item
+                Caption = 'Status'
+                Width = 70
+              end
+              item
+                Caption = 'WID'
+              end
+              item
+                Caption = 'Action'
+              end>
+            MultiSelect = True
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 0
+            ViewStyle = vsReport
           end
         end
       end
@@ -1880,8 +2497,8 @@ object fmConsign: TfmConsign
   object Timer1: TTimer
     Interval = 2000
     OnTimer = Timer1Timer
-    Left = 720
-    Top = 144
+    Left = 704
+    Top = 160
   end
   object IdTCPServer1: TIdTCPServer
     Bindings = <>
@@ -1896,5 +2513,9 @@ object fmConsign: TfmConsign
     OnTimer = Timer2Timer
     Left = 720
     Top = 216
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 288
+    Top = 16
   end
 end

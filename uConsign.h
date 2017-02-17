@@ -27,6 +27,8 @@
 #include <IdTCPServer.hpp>
 #include <Vcl.Buttons.hpp>
 #include <Vcl.ImgList.hpp>
+#include <Vcl.Dialogs.hpp>
+#include <Vcl.Imaging.pngimage.hpp>
 //---------------------------------------------------------------------------
 class TfmConsign : public TForm
 {
@@ -157,6 +159,39 @@ __published:	// IDE-managed Components
 	TBitBtn *BitBtn9;
 	TDBNavigator *DBNavigator5;
 	TTimer *Timer2;
+	TTabSheet *TabSheet2;
+	TPanel *Panel3;
+	TLabeledEdit *LabeledEdit1;
+	TBitBtn *BitBtn2;
+	TPanel *Panel4;
+	TDBGrid *DBGrid4;
+	TButton *Button17;
+	TTabSheet *TabSheet3;
+	TDateTimePicker *DateTimePicker1;
+	TLabel *Label19;
+	TTabSheet *tabDDOrders;
+	TPanel *Panel5;
+	TPanel *Panel6;
+	TPanel *Panel7;
+	TDBLookupComboBox *DBLookupComboBox3;
+	TLabel *Label20;
+	TButton *Button18;
+	TDBGrid *DBGrid5;
+	TButton *Button19;
+	TLabel *Label21;
+	TDBLookupComboBox *DBLookupComboBox4;
+	TTabSheet *TabSheet4;
+	TPanel *Panel8;
+	TPanel *Panel9;
+	TPanel *Panel10;
+	TListView *ListView1;
+	TButton *Button20;
+	TOpenDialog *OpenDialog1;
+	TButton *Button21;
+	TButton *Button22;
+	TButton *Button23;
+	TImage *Image3;
+	TImage *Image2;
 	void __fastcall tabServicesShow(TObject *Sender);
 	void __fastcall tabConsignmentShow(TObject *Sender);
 	void __fastcall txtBarcodeLookupKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -185,10 +220,24 @@ __published:	// IDE-managed Components
 
 	void __fastcall UpdateConsignmentView(TObject *Sender);
 	void __fastcall Timer2Timer(TObject *Sender);
+	void __fastcall Button17Click(TObject *Sender);
+	void __fastcall BitBtn2Click(TObject *Sender);
+	void __fastcall LabeledEdit1KeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
+	void __fastcall Button18Click(TObject *Sender);
+	void __fastcall Button19Click(TObject *Sender);
+	void __fastcall tabDDOrdersExit(TObject *Sender);
+	void __fastcall DBGrid5TitleClick(TColumn *Column);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Button20Click(TObject *Sender);
+	void __fastcall Button21Click(TObject *Sender);
+	void __fastcall Button22Click(TObject *Sender);
+	void __fastcall Button23Click(TObject *Sender);
+	void __fastcall DBEdit2Exit(TObject *Sender);
+
 
 
 public:	// User declarations
-
+	bool CreateConsignmentFrom( UnicodeString parcelScan );
 public:		// User declarations
 	__fastcall TfmConsign(TComponent* Owner);
 };
