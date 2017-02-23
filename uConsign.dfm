@@ -329,7 +329,7 @@ object fmConsign: TfmConsign
       Top = 1
       Width = 1018
       Height = 631
-      ActivePage = tabConsignment
+      ActivePage = TabSheet4
       Align = alClient
       MultiLine = True
       TabOrder = 0
@@ -346,7 +346,6 @@ object fmConsign: TfmConsign
           Color = clCream
           ParentBackground = False
           TabOrder = 0
-          ExplicitTop = -1
           DesignSize = (
             960
             623)

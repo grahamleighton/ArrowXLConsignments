@@ -1778,4 +1778,95 @@ object DM: TDM
     Left = 328
     Top = 368
   end
+  object DDOrderList: TADOQuery
+    Connection = DD_DB
+    CursorType = ctStatic
+    LockType = ltReadOnly
+    AfterOpen = DDOrderListAfterOpen
+    Parameters = <>
+    SQL.Strings = (
+      'SELECT [KEY]'
+      '      ,[ORDER_KEY]'
+      ''
+      ''
+      '      ,[DD_SUPPLIER_CODE]'
+      ''
+      '      ,[ACCOUNT_REF_NO]'
+      '      ,[INVOICE_NO]'
+      ''
+      ''
+      '      ,[CATALOGUE_NUMBER]'
+      '      ,[OPTION_NUMBER]'
+      '      ,[QUANTITY]'
+      '      ,[WEIGHT]'
+      '      ,[PRICE]'
+      '      ,[BEK_PRICE]'
+      '      ,[ITEM_DESCRIPTION]'
+      '      ,[OPTION_DESCRIPTION]'
+      ''
+      '      ,[DD_BARCODE_NO]'
+      ''
+      ''
+      '      ,[DELIVERY_ADDR1]'
+      '      ,[DELIVERY_ADDR2]'
+      '      ,[DELIVERY_ADDR3]'
+      '      ,[DELIVERY_ADDR4]'
+      '      ,[DELIVERY_ADDR5]'
+      '      ,[DELIVERY_ADDR6]'
+      '      ,[DELIVERY_PCODE]'
+      '      ,[CONTACT_PHONE_NO]'
+      '      ,[ALT_PHONE_NO]'
+      '  FROM [ddtrack_daily].[dbo].[orders]'
+      '  where DATE_OF_ORDER> DATEADD(week,-26,getdate())'
+      ''
+      
+        'and dd_supplier_code in ( '#39'A016'#39','#39'A040'#39','#39'B774'#39','#39'B914'#39','#39'C149'#39','#39'E0' +
+        '11'#39','#39'G008'#39','#39'G019'#39','#39'G559'#39','#39'G586'#39','#39'H003'#39','#39'H598'#39','#39'H624'#39','#39'K001'#39','#39'L00' +
+        '9'#39','#39'L027'#39','#39'M172'#39','#39'R450'#39','#39'S714'#39','#39'T601'#39','#39'U003'#39','#39'W378'#39','#39'Y153'#39' )'
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      ''
+      '')
+    Left = 40
+    Top = 296
+  end
+  object qrySuppList: TADOQuery
+    Connection = DB
+    CursorType = ctStatic
+    Parameters = <>
+    SQL.Strings = (
+      'declare @SuppCodes as  varchar(max)'
+      ''
+      
+        'select @SuppCodes=coalesce(@SuppCodes+'#39','#39' ,'#39#39')+QUOTENAME(Supplie' +
+        'rCode)'
+      'from'
+      '('
+      ''
+      'SELECT '
+      '     SupplierCode'
+      '  FROM [CityLink].[dbo].[DSVSuppliers]'
+      '  where coalesce(SupplierCode,'#39#39')<> '#39#39
+      '  ) as aa'
+      '  '
+      ''
+      'set @SuppCodes = REPLACE(@Suppcodes,'#39'['#39','#39#39#39#39')'
+      'set @SuppCodes = REPLACE(@Suppcodes,'#39']'#39','#39#39#39#39')'
+      ''
+      'select @SuppCodes  as SuppList')
+    Left = 408
+    Top = 400
+    object qrySuppListSuppList: TMemoField
+      FieldName = 'SuppList'
+      ReadOnly = True
+      BlobType = ftMemo
+    end
+  end
 end

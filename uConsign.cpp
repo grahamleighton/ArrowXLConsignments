@@ -2174,6 +2174,19 @@ void __fastcall TfmConsign::FormCreate(TObject *Sender)
 
 void __fastcall TfmConsign::Button20Click(TObject *Sender)
 {
+
+
+	if ( ! DM->DDOrderList->Active ) {
+
+		DM->qrySuppList->Open();
+		DM->DDOrderList->SQL->Strings[36] = " and DD_SUPPLIER_CODE IN (" + DM->qrySuppListSuppList->AsString + ")";
+
+		DM->qrySuppList->Close();
+
+		DM->DDOrderList->Open() ;
+
+	}
+
 	if ( OpenDialog1->Execute()  ) {
 		TStringList *imp = new TStringList();
 		TStringList *rec = new TStringList();
@@ -2225,7 +2238,9 @@ void __fastcall TfmConsign::Button20Click(TObject *Sender)
 void __fastcall TfmConsign::Button21Click(TObject *Sender)
 {
 	int i = 0;
-
+	Screen->Cursor = crHourGlass ;
+//	try
+//	{
 	while ( i < ListView1->Items->Count  )
 			{
 				TListItem *LI = ListView1->Items->Item[i];
@@ -2266,9 +2281,60 @@ void __fastcall TfmConsign::Button21Click(TObject *Sender)
 				}
 				else
 				{
-					LI->SubItems->Add ( "No Match");
-					LI->SubItems->Add ( "0" );
-					LI->SubItems->Add ( "1" );
+					TLocateOptions Opts;
+					Opts.Clear() ;
+					Opts << loPartialKey ;
+
+					Variant locValues[3];
+					locValues[0] = Variant(LI->SubItems->Strings[0] );  // supplier code
+					locValues[1] = Variant(LI->SubItems->Strings[1]+LI->SubItems->Strings[2] );  // Key
+					locValues[2] = Variant(LI->SubItems->Strings[3] );  // Item
+
+					Variant LookupResults = DM->DDOrderList->Lookup("DD_SUPPLIER_CODE;KEY;CATALOGUE_NUMBER",VarArrayOf(locValues,3),"OPTION_NUMBER"  );
+
+
+					if ( ! VarIsNull(LookupResults)  ) {
+						Variant on = LookupResults;
+
+						DM->OptLookUp->Parameters->ParamByName("cat")->Value =
+								LI->SubItems->Strings[3];
+						DM->OptLookUp->Parameters->ParamByName("opt")->Value =
+								on;
+						DM->OptLookUp->Open();
+						if ( !DM->OptLookUp->Eof ) {
+							int Parts = 1;
+							LI->SubItems->Add ( "Matched");
+							int Wt = DM->OptLookUpWeight->AsInteger;
+
+							if (! DM->OptLookUpDD1Weight->IsNull && DM->OptLookUpDD1Weight->AsInteger > 0  ) {
+								Wt += ( DM->OrderLookUpDD1Weight->AsInteger / 1000 ) ;
+								Parts++;
+							}
+							if (! DM->OptLookUpDD2Weight->IsNull && DM->OptLookUpDD2Weight->AsInteger > 0   ) {
+								Wt += ( DM->OrderLookUpDD2Weight->AsInteger  / 1000 ) ;
+								Parts++;
+							}
+							if (! DM->OptLookUpDD3Weight->IsNull && DM->OptLookUpDD3Weight->AsInteger > 0  ) {
+								Wt += ( DM->OrderLookUpDD3Weight->AsInteger  / 1000 ) ;
+								Parts++;
+							}
+							if (! DM->OptLookUpDD4Weight->IsNull && DM->OptLookUpDD4Weight->AsInteger > 0  ) {
+								Wt += ( DM->OrderLookUpDD4Weight->AsInteger  / 1000 ) ;
+								Parts++;
+							}
+
+							LI->SubItems->Add ( IntToStr(Wt) );
+							LI->SubItems->Add ( IntToStr(Parts) );
+						}
+					}
+					else
+					{
+						LI->SubItems->Add ( "No Match");
+						LI->SubItems->Add ( "0" );
+						LI->SubItems->Add ( "1" );
+					}
+					DM->OptLookUp->Close();
+					Application->ProcessMessages();
 				}
 
 					DM->Q->SQL->Text = "select * from viewAXLConsignments where CustomerReference like '%" + LI->SubItems->Strings[1].Trim() + "%' and CustomerReference like '%" + IntToStr(LI->SubItems->Strings[2].Trim().ToInt()) + "%'";
@@ -2286,9 +2352,13 @@ void __fastcall TfmConsign::Button21Click(TObject *Sender)
 				i++;
 			}
 	DM->OrderLookUp->Close();
-
+//	}
+//	catch(Exception &E)
+//	{
+//		MessageDlg ( E.Message , mtError , TMsgDlgButtons() << mbOK , 0 );
+//	}
 	Button21->Enabled = false;
-
+	Screen->Cursor = crArrow;
 
 }
 //---------------------------------------------------------------------------

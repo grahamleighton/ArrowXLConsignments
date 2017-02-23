@@ -409,11 +409,15 @@ __published:	// IDE-managed Components
 	TIntegerField *OptLookUpDD4Dim3;
 	TIntegerField *OptLookUpDD4Weight;
 	TADOQuery *Q;
+	TADOQuery *DDOrderList;
+	TADOQuery *qrySuppList;
+	TMemoField *qrySuppListSuppList;
 	void __fastcall ConsignmentItemsBeforeInsert(TDataSet *DataSet);
 	void __fastcall ConsignmentItemsAfterPost(TDataSet *DataSet);
 	void __fastcall ConsignmentsNewRecord(TDataSet *DataSet);
 	void __fastcall ConsignmentsViewAfterPost(TDataSet *DataSet);
 	void __fastcall ConsignmentsAfterScroll(TDataSet *DataSet);
+	void __fastcall DDOrderListAfterOpen(TDataSet *DataSet);
 
 
 private:	// User declarations

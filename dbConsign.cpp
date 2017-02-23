@@ -82,3 +82,9 @@ void __fastcall TDM::ConsignmentsAfterScroll(TDataSet *DataSet)
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TDM::DDOrderListAfterOpen(TDataSet *DataSet)
+{
+	DDOrderList->Tag = 1;
+}
+//---------------------------------------------------------------------------
+
