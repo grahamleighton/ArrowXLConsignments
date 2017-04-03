@@ -719,13 +719,17 @@ object DM: TDM
     CursorType = ctStatic
     Parameters = <>
     SQL.Strings = (
-      'select * from viewAXLDSVSuppliers'
+      
+        'select *,DSVSuppliers.SupplierName as WarehouseLink from viewAXL' +
+        'DSVSuppliers'
+      'inner join DSVSuppliers on '
+      'viewAXLDSVSuppliers.SupplierID = DSVSuppliers.SupplierID'
       ''
       ''
       ''
       ''
       ''
-      'order by SupplierName')
+      'order by viewAXLDSVSuppliers.SupplierName')
     Left = 144
     Top = 296
     object DSVSuppliersSupplierID: TLargeintField
@@ -770,6 +774,10 @@ object DM: TDM
     object DSVSuppliersCollectionDates: TStringField
       FieldName = 'CollectionDates'
       Size = 150
+    end
+    object DSVSuppliersWarehouseLink: TStringField
+      FieldName = 'WarehouseLink'
+      Size = 70
     end
   end
   object dsDSVSuppliers: TDataSource

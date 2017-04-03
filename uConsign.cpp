@@ -3,6 +3,9 @@
 #include <vcl.h>
 #include <dateutils.hpp>
 
+#include <process.h>
+
+
 #pragma hdrstop
 
 #include "uConsign.h"
@@ -11,6 +14,7 @@
 #include "uOptionSelect.h"
 #include "uProductTypes.h"
 #include "uNoMatch.h"
+
 
 
 //---------------------------------------------------------------------------
@@ -33,7 +37,7 @@ int DedicatedServiceCode = 0;
 int AddMode = 0;
 
 
-#define CHEAT 1
+// #define CHEAT 1
 
 
 
@@ -2506,4 +2510,202 @@ void __fastcall TfmConsign::DBEdit2Exit(TObject *Sender)
 }
 //---------------------------------------------------------------------------
 
+
+
+void __fastcall TfmConsign::actRunDDTransferExecute(TObject *Sender)
+{
+	UnicodeString DDTransferFolder = "H:\\DDTransfer";
+	UnicodeString DDTransferBatchFile = DDTransferFolder + "\\ARROW_DESPATCHES.BAT";
+	UnicodeString DDTransferInFolder = DDTransferFolder + "\\in";
+	UnicodeString DDTransferOutputFile = DDTransferInFolder + "\\ARROW_DESPATCHES.csv";
+
+	AnsiString DDTransferBatchFile2 = DDTransferBatchFile;
+
+	ForceDirectories ( DDTransferFolder );
+	ForceDirectories ( DDTransferInFolder );
+
+
+	if ( DirectoryExists(DDTransferFolder) ) {
+		if ( DirectoryExists(DDTransferInFolder) ) {
+			if ( FileExists(DDTransferOutputFile) ) {
+				try
+				{
+					DeleteFile(DDTransferOutputFile );
+				}
+				catch(Exception &E)
+				{
+					MessageDlg ( "Cannot run batch file as " + DDTransferOutputFile + " is in use" ,
+						mtError ,
+						TMsgDlgButtons() << mbOK , 0 );
+					return;
+				}
+			}
+
+			UnicodeString cd = GetCurrentDir() ;
+
+			SetCurrentDir(DDTransferFolder);
+
+			system ( DDTransferBatchFile2.c_str() );
+
+
+
+
+	if ( ! DM->DDOrderList->Active ) {
+
+		DM->qrySuppList->Open();
+		DM->DDOrderList->SQL->Strings[36] = " and DD_SUPPLIER_CODE IN (" + DM->qrySuppListSuppList->AsString + ")";
+
+		DM->qrySuppList->Close();
+
+		DM->DDOrderList->Open() ;
+
+	}
+
+		TStringList *imp = new TStringList();
+		TStringList *rec = new TStringList();
+
+		imp->Clear() ;
+		imp->LoadFromFile(DDTransferOutputFile  );
+
+
+		imp->Delimiter = ';';
+		rec->Delimiter = ';';
+
+		int i = 0;
+		ListView1->Items->Clear() ;
+
+		while ( i < imp->Count )
+		{
+			rec->Clear();
+
+
+			rec->DelimitedText = StringReplace(imp->Strings[i], " ", "}" , TReplaceFlags() << rfReplaceAll );
+
+			rec->Text = StringReplace(rec->Text, "}", " " , TReplaceFlags() << rfReplaceAll );
+
+			TListItem *LI = ListView1->Items->Add() ;
+
+			LI->Caption = rec->Strings[0];
+			LI->SubItems->Add(rec->Strings[2]);
+			LI->SubItems->Add(rec->Strings[3]);
+			LI->SubItems->Add(rec->Strings[4]);
+			LI->SubItems->Add(rec->Strings[6]);
+			LI->SubItems->Add(rec->Strings[7]);
+
+
+			i++;
+
+
+		}
+			delete imp;
+			delete rec;
+		Button21->Enabled = true;
+
+
+
+
+
+
+	}
+
+
+
+
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::actOpenMetapackExecute(TObject *Sender)
+{
+	WebBrowser1->Navigate(L"http://dm-hdn.metapack.com/dm/ActionServlet?action=home");
+
+	PageControl1->ActivePage  = TabSheet4;
+	PageControl2->ActivePage = tabMetapack ;
+
+
+
+
+
+//	ShellExecute(NULL , L"open" ,L"iexplore", L"http://dm-hdn.metapack.com/dm/ActionServlet?action=home" , NULL , SW_SHOW );
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+void __fastcall TfmConsign::WebBrowser1NewWindow3(TObject *ASender, IDispatch *&ppDisp,
+          WordBool &Cancel, DWORD dwFlags, const WideString bstrUrlContext,
+          const WideString bstrUrl)
+{
+	WebBrowser2->Navigate(bstrUrl);
+	PageControl2->ActivePage = TabSheet6 ;
+	Cancel = true;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::WebBrowser2NewWindow3(TObject *ASender, IDispatch *&ppDisp,
+		  WordBool &Cancel, DWORD dwFlags, const WideString bstrUrlContext,
+		  const WideString bstrUrl)
+{
+	WebBrowser3->Navigate(bstrUrl);
+	PageControl2->ActivePage = TabSheet7 ;
+	Cancel = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::WebBrowser3NewWindow3(TObject *ASender, IDispatch *&ppDisp,
+		  WordBool &Cancel, DWORD dwFlags, const WideString bstrUrlContext,
+		  const WideString bstrUrl)
+{
+	WebBrowser4->Navigate(bstrUrl);
+	PageControl2->ActivePage = TabSheet8 ;
+	Cancel = true;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::WebBrowser2WindowClosing(TObject *ASender, WordBool IsChildWindow,
+          WordBool &Cancel)
+{
+	Cancel = true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::WebBrowser3WindowClosing(TObject *ASender, WordBool IsChildWindow,
+          WordBool &Cancel)
+{
+	Cancel = true;
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::WebBrowser4WindowClosing(TObject *ASender, WordBool IsChildWindow,
+          WordBool &Cancel)
+{
+	Cancel = true;
+
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TfmConsign::Button26Click(TObject *Sender)
+{
+	if ( ! DM->ConsignmentsViewSupplierName->IsNull  ) {
+		AnsiString WarehouseID = DM->ConsignmentsViewSupplierName->Value;
+
+		WebBrowser1->Navigate("http://dm-hdn.metapack.com/dm/ActionServlet?action=login&url=%2Fdm%2FActionServlet%3Faction%3Dhome&userId=FGHALL&password=FGHaccessall");
+
+		Sleep(2000);
+ 		WebBrowser1->Navigate("http://dm-hdn.metapack.com/dm/ActionServlet?action=cons_search&textType=0&text=&consignmentStatusId=-1&carrierId=-1&ps=40&filterDateAllocatedAfter=&filterDateDespatchAfter=&filterDateDeliveryAfter=&filterDateCompletedAfter=&filterDateCreatedAfter=&filterDateModifiedAfter=&filterDateAllocatedBefore=&filterDateDespatchBefore=&filterDateDeliveryBefore=&filterDateCompletedBefore=&filterDateCreatedBefore=&filterDateModifiedBefore=&ttype=-1&warehouseId=" + WarehouseID + "&uploadId=-1&createdBy=-1&modifiedBy=-1&limitResults=-1&limitDays=30&countryCode=&transitType=-1");
+
+		PageControl1->ActivePage  = TabSheet4;
+		PageControl2->ActivePage = tabMetapack ;
+
+
+	}
+}
+//---------------------------------------------------------------------------
 

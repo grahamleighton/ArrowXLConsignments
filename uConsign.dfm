@@ -316,6 +316,20 @@ object fmConsign: TfmConsign
         949CDA72493B37ADAD15645D1A30A11E58EC7FFFD9}
       ExplicitLeft = 612
     end
+    object Button24: TButton
+      Left = 735
+      Top = 58
+      Width = 108
+      Height = 25
+      Action = actOpenMetapack
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Verdana'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+    end
   end
   object pnlMain: TPanel
     Left = 0
@@ -329,7 +343,7 @@ object fmConsign: TfmConsign
       Top = 1
       Width = 1018
       Height = 631
-      ActivePage = TabSheet4
+      ActivePage = tabConsignments
       Align = alClient
       MultiLine = True
       TabOrder = 0
@@ -1384,6 +1398,15 @@ object fmConsign: TfmConsign
             Time = 42760.410980393520000000
             TabOrder = 8
           end
+          object Button26: TButton
+            Left = 336
+            Top = 64
+            Width = 89
+            Height = 25
+            Caption = 'MP Labels'
+            TabOrder = 9
+            OnClick = Button26Click
+          end
         end
       end
       object tabServices: TTabSheet
@@ -2128,129 +2151,253 @@ object fmConsign: TfmConsign
       object TabSheet4: TTabSheet
         Caption = 'Order Import'
         ImageIndex = 8
-        object Panel8: TPanel
+        object PageControl2: TPageControl
           Left = 0
           Top = 0
           Width = 960
-          Height = 41
-          Align = alTop
-          TabOrder = 0
-          object Button20: TButton
-            Left = 8
-            Top = 10
-            Width = 75
-            Height = 25
-            Caption = 'Import...'
-            TabOrder = 0
-            OnClick = Button20Click
-          end
-          object Button21: TButton
-            Left = 128
-            Top = 11
-            Width = 75
-            Height = 25
-            Caption = 'Process..'
-            TabOrder = 1
-            OnClick = Button21Click
-          end
-          object Button22: TButton
-            Left = 280
-            Top = 11
-            Width = 129
-            Height = 25
-            Caption = 'Check Selected'
-            TabOrder = 2
-            OnClick = Button22Click
-          end
-          object Button23: TButton
-            Left = 456
-            Top = 10
-            Width = 169
-            Height = 25
-            Caption = 'Process Selected'
-            TabOrder = 3
-            OnClick = Button23Click
-          end
-        end
-        object Panel9: TPanel
-          Left = 0
-          Top = 582
-          Width = 960
-          Height = 41
-          Align = alBottom
-          Caption = 'Import the Arrow XL file created from DD Track'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlue
-          Font.Height = -15
-          Font.Name = 'Verdana'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 1
-        end
-        object Panel10: TPanel
-          Left = 0
-          Top = 41
-          Width = 960
-          Height = 541
+          Height = 623
+          ActivePage = TabSheet5
           Align = alClient
-          Caption = 'Panel10'
-          TabOrder = 2
-          object ListView1: TListView
-            Left = 1
-            Top = 1
-            Width = 958
-            Height = 539
-            Align = alClient
-            Columns = <
-              item
-                Caption = 'Barcode'
-                Width = 140
+          TabOrder = 0
+          object TabSheet5: TTabSheet
+            Caption = 'DD Process'
+            object Panel10: TPanel
+              Left = 0
+              Top = 41
+              Width = 952
+              Height = 508
+              Align = alClient
+              Caption = 'Panel10'
+              TabOrder = 0
+              object ListView1: TListView
+                Left = 1
+                Top = 1
+                Width = 950
+                Height = 506
+                Align = alClient
+                Columns = <
+                  item
+                    Caption = 'Barcode'
+                    Width = 140
+                  end
+                  item
+                    Caption = 'Supplier'
+                    Width = 70
+                  end
+                  item
+                    Caption = 'Agency'
+                    Width = 90
+                  end
+                  item
+                    Caption = 'Invoice'
+                    Width = 70
+                  end
+                  item
+                    Caption = 'CatNo'
+                    Width = 70
+                  end
+                  item
+                    Caption = 'Description'
+                    Width = 150
+                  end
+                  item
+                    Caption = 'Match'
+                    Width = 70
+                  end
+                  item
+                    Caption = 'Weight'
+                  end
+                  item
+                    Caption = 'Parts'
+                  end
+                  item
+                    Caption = 'Status'
+                    Width = 70
+                  end
+                  item
+                    Caption = 'WID'
+                  end
+                  item
+                    Caption = 'Action'
+                  end>
+                MultiSelect = True
+                ReadOnly = True
+                RowSelect = True
+                TabOrder = 0
+                ViewStyle = vsReport
               end
-              item
-                Caption = 'Supplier'
-                Width = 70
+            end
+            object Panel8: TPanel
+              Left = 0
+              Top = 0
+              Width = 952
+              Height = 41
+              Align = alTop
+              TabOrder = 1
+              object Button20: TButton
+                Left = 8
+                Top = 10
+                Width = 75
+                Height = 25
+                Caption = 'Import...'
+                TabOrder = 0
+                OnClick = Button20Click
               end
-              item
-                Caption = 'Agency'
-                Width = 90
+              object Button21: TButton
+                Left = 112
+                Top = 11
+                Width = 75
+                Height = 25
+                Caption = 'Process..'
+                TabOrder = 1
+                OnClick = Button21Click
               end
-              item
-                Caption = 'Invoice'
-                Width = 70
+              object Button22: TButton
+                Left = 224
+                Top = 11
+                Width = 129
+                Height = 25
+                Caption = 'Check Selected'
+                TabOrder = 2
+                OnClick = Button22Click
               end
-              item
-                Caption = 'CatNo'
-                Width = 70
+              object Button23: TButton
+                Left = 392
+                Top = 11
+                Width = 169
+                Height = 25
+                Caption = 'Process Selected'
+                TabOrder = 3
+                OnClick = Button23Click
               end
-              item
-                Caption = 'Description'
-                Width = 150
+              object Button25: TButton
+                Left = 592
+                Top = 11
+                Width = 161
+                Height = 25
+                Action = actRunDDTransfer
+                TabOrder = 4
               end
-              item
-                Caption = 'Match'
-                Width = 70
+            end
+            object Panel9: TPanel
+              Left = 0
+              Top = 549
+              Width = 952
+              Height = 41
+              Align = alBottom
+              Caption = 'Import the Arrow XL file created from DD Track'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clBlue
+              Font.Height = -15
+              Font.Name = 'Verdana'
+              Font.Style = []
+              ParentFont = False
+              TabOrder = 2
+            end
+          end
+          object tabMetapack: TTabSheet
+            Caption = 'Metapack'
+            ImageIndex = 1
+            object Panel11: TPanel
+              Left = 0
+              Top = 0
+              Width = 952
+              Height = 590
+              Align = alClient
+              Caption = 'Panel11'
+              TabOrder = 0
+              object WebBrowser1: TWebBrowser
+                Left = 1
+                Top = 1
+                Width = 950
+                Height = 588
+                Align = alClient
+                TabOrder = 0
+                OnNewWindow3 = WebBrowser1NewWindow3
+                ExplicitLeft = 168
+                ExplicitTop = 152
+                ExplicitWidth = 300
+                ExplicitHeight = 150
+                ControlData = {
+                  4C0000002F620000C63C00000000000000000000000000000000000000000000
+                  000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                  2B2E126208000000000000004C0000000114020000000000C000000000000046
+                  8000000000000000000000000000000000000000000000000000000000000000
+                  00000000000000000100000000000000000000000000000000000000}
               end
-              item
-                Caption = 'Weight'
-              end
-              item
-                Caption = 'Parts'
-              end
-              item
-                Caption = 'Status'
-                Width = 70
-              end
-              item
-                Caption = 'WID'
-              end
-              item
-                Caption = 'Action'
-              end>
-            MultiSelect = True
-            ReadOnly = True
-            RowSelect = True
-            TabOrder = 0
-            ViewStyle = vsReport
+            end
+          end
+          object TabSheet6: TTabSheet
+            Caption = 'Print Options'
+            ImageIndex = 2
+            object WebBrowser2: TWebBrowser
+              Left = 0
+              Top = 0
+              Width = 952
+              Height = 590
+              Align = alClient
+              TabOrder = 0
+              OnWindowClosing = WebBrowser2WindowClosing
+              OnNewWindow3 = WebBrowser2NewWindow3
+              ExplicitLeft = 272
+              ExplicitTop = 120
+              ExplicitWidth = 300
+              ExplicitHeight = 150
+              ControlData = {
+                4C00000064620000FA3C00000000000000000000000000000000000000000000
+                000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                2B2E126208000000000000004C0000000114020000000000C000000000000046
+                8000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000100000000000000000000000000000000000000}
+            end
+          end
+          object TabSheet7: TTabSheet
+            Caption = 'PDF '
+            ImageIndex = 3
+            object WebBrowser3: TWebBrowser
+              Left = 0
+              Top = 0
+              Width = 952
+              Height = 590
+              Align = alClient
+              TabOrder = 0
+              OnWindowClosing = WebBrowser3WindowClosing
+              OnNewWindow3 = WebBrowser3NewWindow3
+              ExplicitLeft = 272
+              ExplicitTop = 120
+              ExplicitWidth = 300
+              ExplicitHeight = 150
+              ControlData = {
+                4C00000064620000FA3C00000000000000000000000000000000000000000000
+                000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                2B2E126208000000000000004C0000000114020000000000C000000000000046
+                8000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000100000000000000000000000000000000000000}
+            end
+          end
+          object TabSheet8: TTabSheet
+            Caption = 'TabSheet8'
+            ImageIndex = 4
+            TabVisible = False
+            object WebBrowser4: TWebBrowser
+              Left = 0
+              Top = 0
+              Width = 952
+              Height = 590
+              Align = alClient
+              TabOrder = 0
+              OnWindowClosing = WebBrowser4WindowClosing
+              ExplicitLeft = 272
+              ExplicitTop = 120
+              ExplicitWidth = 300
+              ExplicitHeight = 150
+              ControlData = {
+                4C00000064620000FA3C00000000000000000000000000000000000000000000
+                000000004C000000000000000000000001000000E0D057007335CF11AE690800
+                2B2E126208000000000000004C0000000114020000000000C000000000000046
+                8000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000100000000000000000000000000000000000000}
+            end
           end
         end
       end
@@ -2492,6 +2639,16 @@ object fmConsign: TfmConsign
       Hint = 'Edit'
       ImageIndex = 6
     end
+    object actRunDDTransfer: TAction
+      Category = 'File'
+      Caption = 'Run DDTransfer'
+      OnExecute = actRunDDTransferExecute
+    end
+    object actOpenMetapack: TAction
+      Category = 'File'
+      Caption = 'Metapack..'
+      OnExecute = actOpenMetapackExecute
+    end
   end
   object Timer1: TTimer
     Interval = 2000
@@ -2516,5 +2673,11 @@ object fmConsign: TfmConsign
   object OpenDialog1: TOpenDialog
     Left = 288
     Top = 16
+  end
+  object LockTimer: TTimer
+    Enabled = False
+    Interval = 300000
+    Left = 744
+    Top = 320
   end
 end

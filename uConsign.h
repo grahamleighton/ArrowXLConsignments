@@ -29,6 +29,8 @@
 #include <Vcl.ImgList.hpp>
 #include <Vcl.Dialogs.hpp>
 #include <Vcl.Imaging.pngimage.hpp>
+#include <SHDocVw.hpp>
+#include <Vcl.OleCtrls.hpp>
 //---------------------------------------------------------------------------
 class TfmConsign : public TForm
 {
@@ -192,6 +194,23 @@ __published:	// IDE-managed Components
 	TButton *Button23;
 	TImage *Image3;
 	TImage *Image2;
+	TTimer *LockTimer;
+	TPageControl *PageControl2;
+	TTabSheet *TabSheet5;
+	TAction *actRunDDTransfer;
+	TButton *Button25;
+	TAction *actOpenMetapack;
+	TButton *Button24;
+	TTabSheet *tabMetapack;
+	TPanel *Panel11;
+	TWebBrowser *WebBrowser1;
+	TTabSheet *TabSheet6;
+	TWebBrowser *WebBrowser2;
+	TTabSheet *TabSheet7;
+	TTabSheet *TabSheet8;
+	TWebBrowser *WebBrowser3;
+	TWebBrowser *WebBrowser4;
+	TButton *Button26;
 	void __fastcall tabServicesShow(TObject *Sender);
 	void __fastcall tabConsignmentShow(TObject *Sender);
 	void __fastcall txtBarcodeLookupKeyDown(TObject *Sender, WORD &Key, TShiftState Shift);
@@ -233,6 +252,26 @@ __published:	// IDE-managed Components
 	void __fastcall Button22Click(TObject *Sender);
 	void __fastcall Button23Click(TObject *Sender);
 	void __fastcall DBEdit2Exit(TObject *Sender);
+	void __fastcall actRunDDTransferExecute(TObject *Sender);
+	void __fastcall actOpenMetapackExecute(TObject *Sender);
+	void __fastcall WebBrowser1NewWindow3(TObject *ASender, IDispatch *&ppDisp, WordBool &Cancel,
+          DWORD dwFlags, const WideString bstrUrlContext, const WideString bstrUrl);
+	void __fastcall WebBrowser2NewWindow3(TObject *ASender, IDispatch *&ppDisp, WordBool &Cancel,
+          DWORD dwFlags, const WideString bstrUrlContext, const WideString bstrUrl);
+	void __fastcall WebBrowser3NewWindow3(TObject *ASender, IDispatch *&ppDisp, WordBool &Cancel,
+          DWORD dwFlags, const WideString bstrUrlContext, const WideString bstrUrl);
+	void __fastcall WebBrowser2WindowClosing(TObject *ASender, WordBool IsChildWindow,
+          WordBool &Cancel);
+	void __fastcall WebBrowser3WindowClosing(TObject *ASender, WordBool IsChildWindow,
+          WordBool &Cancel);
+	void __fastcall WebBrowser4WindowClosing(TObject *ASender, WordBool IsChildWindow,
+          WordBool &Cancel);
+	void __fastcall Button26Click(TObject *Sender);
+
+
+
+
+
 
 
 

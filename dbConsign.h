@@ -412,6 +412,7 @@ __published:	// IDE-managed Components
 	TADOQuery *DDOrderList;
 	TADOQuery *qrySuppList;
 	TMemoField *qrySuppListSuppList;
+	TStringField *DSVSuppliersWarehouseLink;
 	void __fastcall ConsignmentItemsBeforeInsert(TDataSet *DataSet);
 	void __fastcall ConsignmentItemsAfterPost(TDataSet *DataSet);
 	void __fastcall ConsignmentsNewRecord(TDataSet *DataSet);
