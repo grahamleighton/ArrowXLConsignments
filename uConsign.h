@@ -267,6 +267,7 @@ __published:	// IDE-managed Components
 	void __fastcall WebBrowser4WindowClosing(TObject *ASender, WordBool IsChildWindow,
           WordBool &Cancel);
 	void __fastcall Button26Click(TObject *Sender);
+	void __fastcall FormResize(TObject *Sender);
 
 
 

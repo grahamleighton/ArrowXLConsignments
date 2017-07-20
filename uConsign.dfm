@@ -1,8 +1,8 @@
 object fmConsign: TfmConsign
   Left = 0
   Top = 0
-  Caption = 'Arrow XL Metapack Consignment Management System Version : 1.4'
-  ClientHeight = 741
+  Caption = 'Arrow XL Metapack Consignment Management System Version : 1.5'
+  ClientHeight = 793
   ClientWidth = 1020
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,6 +15,7 @@ object fmConsign: TfmConsign
   ShowHint = True
   OnClose = FormClose
   OnCreate = FormCreate
+  OnResize = FormResize
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 18
@@ -335,15 +336,15 @@ object fmConsign: TfmConsign
     Left = 0
     Top = 89
     Width = 1020
-    Height = 633
+    Height = 685
     Align = alClient
     TabOrder = 1
     object PageControl1: TPageControl
       Left = 1
       Top = 1
       Width = 1018
-      Height = 631
-      ActivePage = tabConsignments
+      Height = 683
+      ActivePage = tabDDOrders
       Align = alClient
       MultiLine = True
       TabOrder = 0
@@ -355,14 +356,14 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 0
           Width = 960
-          Height = 623
+          Height = 675
           Align = alClient
           Color = clCream
           ParentBackground = False
           TabOrder = 0
           DesignSize = (
             960
-            623)
+            675)
           object Label1: TLabel
             Left = 514
             Top = 17
@@ -422,7 +423,7 @@ object fmConsign: TfmConsign
             Top = 648
             Width = 62
             Height = 18
-            Anchors = [akTop, akRight]
+            Anchors = [akLeft, akBottom]
             AutoSize = True
             DataField = 'ConsignmentID'
             DataSource = DM.dsConsignments
@@ -432,6 +433,7 @@ object fmConsign: TfmConsign
             Top = 624
             Width = 121
             Height = 18
+            Anchors = [akLeft, akBottom]
             Caption = 'CSV Created On'
           end
           object dbCSVCreated: TDBText
@@ -795,7 +797,7 @@ object fmConsign: TfmConsign
             OnKeyDown = txtBarcodeLookupKeyDown
           end
           object grpItems: TGroupBox
-            Left = 22
+            Left = 16
             Top = 431
             Width = 940
             Height = 187
@@ -888,7 +890,7 @@ object fmConsign: TfmConsign
               end
               object txtItemSearch: TLabeledEdit
                 Left = 760
-                Top = 59
+                Top = 19
                 Width = 121
                 Height = 26
                 EditLabel.Width = 159
@@ -1051,14 +1053,14 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 41
           Width = 960
-          Height = 467
+          Height = 519
           Align = alClient
           TabOrder = 1
           object DBGrid2: TDBGrid
             Left = 1
             Top = 1
             Width = 958
-            Height = 465
+            Height = 517
             Align = alClient
             DataSource = DM.dsConsignmentsView
             DrawingStyle = gdsGradient
@@ -1285,7 +1287,7 @@ object fmConsign: TfmConsign
         end
         object pnlConsignmentsBottom: TPanel
           Left = 0
-          Top = 508
+          Top = 560
           Width = 960
           Height = 115
           Align = alBottom
@@ -1415,7 +1417,7 @@ object fmConsign: TfmConsign
         OnShow = tabServicesShow
         object pnlServiceNav: TPanel
           Left = 0
-          Top = 275
+          Top = 327
           Width = 960
           Height = 348
           Align = alBottom
@@ -1433,14 +1435,14 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 0
           Width = 960
-          Height = 275
+          Height = 327
           Align = alClient
           TabOrder = 1
           object DBGrid1: TDBGrid
             Left = 1
             Top = 1
             Width = 958
-            Height = 273
+            Height = 325
             Align = alClient
             DataSource = DM.dsSuppServices
             DrawingStyle = gdsGradient
@@ -1529,7 +1531,7 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 0
           Width = 960
-          Height = 623
+          Height = 675
           Align = alClient
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -1549,13 +1551,13 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 0
           Width = 960
-          Height = 623
+          Height = 675
           Align = alClient
           Caption = 'Panel1'
           TabOrder = 0
           object Panel2: TPanel
             Left = 1
-            Top = 476
+            Top = 528
             Width = 958
             Height = 146
             Align = alBottom
@@ -1629,7 +1631,7 @@ object fmConsign: TfmConsign
             Left = 1
             Top = 1
             Width = 958
-            Height = 475
+            Height = 527
             Align = alClient
             DataSource = DM.dsDSVSuppliers
             TabOrder = 1
@@ -1759,7 +1761,7 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 65
           Width = 960
-          Height = 558
+          Height = 610
           Align = alClient
           Caption = 'Panel4'
           TabOrder = 1
@@ -1767,7 +1769,7 @@ object fmConsign: TfmConsign
             Left = 1
             Top = 1
             Width = 958
-            Height = 556
+            Height = 608
             Align = alClient
             DataSource = DM.dsOrderSearch
             FixedColor = clMoneyGreen
@@ -1960,7 +1962,7 @@ object fmConsign: TfmConsign
         end
         object Panel6: TPanel
           Left = 0
-          Top = 582
+          Top = 634
           Width = 960
           Height = 41
           Align = alBottom
@@ -1970,14 +1972,14 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 129
           Width = 960
-          Height = 453
+          Height = 505
           Align = alClient
           TabOrder = 2
           object DBGrid5: TDBGrid
             Left = 1
             Top = 1
             Width = 958
-            Height = 451
+            Height = 503
             Align = alClient
             DataSource = DM.dsDDOrders
             Font.Charset = DEFAULT_CHARSET
@@ -2155,7 +2157,7 @@ object fmConsign: TfmConsign
           Left = 0
           Top = 0
           Width = 960
-          Height = 623
+          Height = 675
           ActivePage = TabSheet5
           Align = alClient
           TabOrder = 0
@@ -2165,7 +2167,7 @@ object fmConsign: TfmConsign
               Left = 0
               Top = 41
               Width = 952
-              Height = 508
+              Height = 560
               Align = alClient
               Caption = 'Panel10'
               TabOrder = 0
@@ -2173,7 +2175,7 @@ object fmConsign: TfmConsign
                 Left = 1
                 Top = 1
                 Width = 950
-                Height = 506
+                Height = 558
                 Align = alClient
                 Columns = <
                   item
@@ -2281,7 +2283,7 @@ object fmConsign: TfmConsign
             end
             object Panel9: TPanel
               Left = 0
-              Top = 549
+              Top = 601
               Width = 952
               Height = 41
               Align = alBottom
@@ -2302,7 +2304,7 @@ object fmConsign: TfmConsign
               Left = 0
               Top = 0
               Width = 952
-              Height = 590
+              Height = 642
               Align = alClient
               Caption = 'Panel11'
               TabOrder = 0
@@ -2310,7 +2312,7 @@ object fmConsign: TfmConsign
                 Left = 1
                 Top = 1
                 Width = 950
-                Height = 588
+                Height = 640
                 Align = alClient
                 TabOrder = 0
                 OnNewWindow3 = WebBrowser1NewWindow3
@@ -2319,7 +2321,7 @@ object fmConsign: TfmConsign
                 ExplicitWidth = 300
                 ExplicitHeight = 150
                 ControlData = {
-                  4C0000002F620000C63C00000000000000000000000000000000000000000000
+                  4C0000002F620000254200000000000000000000000000000000000000000000
                   000000004C000000000000000000000001000000E0D057007335CF11AE690800
                   2B2E126208000000000000004C0000000114020000000000C000000000000046
                   8000000000000000000000000000000000000000000000000000000000000000
@@ -2334,7 +2336,7 @@ object fmConsign: TfmConsign
               Left = 0
               Top = 0
               Width = 952
-              Height = 590
+              Height = 642
               Align = alClient
               TabOrder = 0
               OnWindowClosing = WebBrowser2WindowClosing
@@ -2344,7 +2346,7 @@ object fmConsign: TfmConsign
               ExplicitWidth = 300
               ExplicitHeight = 150
               ControlData = {
-                4C00000064620000FA3C00000000000000000000000000000000000000000000
+                4C000000646200005A4200000000000000000000000000000000000000000000
                 000000004C000000000000000000000001000000E0D057007335CF11AE690800
                 2B2E126208000000000000004C0000000114020000000000C000000000000046
                 8000000000000000000000000000000000000000000000000000000000000000
@@ -2358,7 +2360,7 @@ object fmConsign: TfmConsign
               Left = 0
               Top = 0
               Width = 952
-              Height = 590
+              Height = 642
               Align = alClient
               TabOrder = 0
               OnWindowClosing = WebBrowser3WindowClosing
@@ -2368,7 +2370,7 @@ object fmConsign: TfmConsign
               ExplicitWidth = 300
               ExplicitHeight = 150
               ControlData = {
-                4C00000064620000FA3C00000000000000000000000000000000000000000000
+                4C000000646200005A4200000000000000000000000000000000000000000000
                 000000004C000000000000000000000001000000E0D057007335CF11AE690800
                 2B2E126208000000000000004C0000000114020000000000C000000000000046
                 8000000000000000000000000000000000000000000000000000000000000000
@@ -2383,7 +2385,7 @@ object fmConsign: TfmConsign
               Left = 0
               Top = 0
               Width = 952
-              Height = 590
+              Height = 642
               Align = alClient
               TabOrder = 0
               OnWindowClosing = WebBrowser4WindowClosing
@@ -2392,7 +2394,7 @@ object fmConsign: TfmConsign
               ExplicitWidth = 300
               ExplicitHeight = 150
               ControlData = {
-                4C00000064620000FA3C00000000000000000000000000000000000000000000
+                4C000000646200005A4200000000000000000000000000000000000000000000
                 000000004C000000000000000000000001000000E0D057007335CF11AE690800
                 2B2E126208000000000000004C0000000114020000000000C000000000000046
                 8000000000000000000000000000000000000000000000000000000000000000
@@ -2405,7 +2407,7 @@ object fmConsign: TfmConsign
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Top = 722
+    Top = 774
     Width = 1020
     Height = 19
     Panels = <
@@ -2660,8 +2662,8 @@ object fmConsign: TfmConsign
     Bindings = <>
     DefaultPort = 2013
     OnExecute = IdTCPServer1Execute
-    Left = 1024
-    Top = 288
+    Left = 856
+    Top = 328
   end
   object Timer2: TTimer
     Enabled = False

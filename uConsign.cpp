@@ -259,7 +259,7 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->ItemLookupDD1Weight->Value / 1000;
+						DM->ItemLookupDD1Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->ItemLookupDD1Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -286,7 +286,7 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->ItemLookupDD2Weight->Value / 1000;
+						DM->ItemLookupDD2Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->ItemLookupDD2Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -314,7 +314,7 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->ItemLookupDD3Weight->Value / 1000;
+						DM->ItemLookupDD3Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->ItemLookupDD3Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -342,7 +342,7 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->ItemLookupDD4Weight->Value / 1000;
+						DM->ItemLookupDD4Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->ItemLookupDD4Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -359,6 +359,114 @@ void __fastcall TfmConsign::txtItemSearchKeyDown(TObject *Sender, WORD &Key, TSh
 
 				}
 
+				if ( ! DM->ItemLookupDD5Dim1->IsNull && DM->ItemLookupDD5Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD5Weight->Value;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD5Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD5Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD5Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+				if ( ! DM->ItemLookupDD6Dim1->IsNull && DM->ItemLookupDD6Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD6Weight->Value;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD6Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD6Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD6Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+				if ( ! DM->ItemLookupDD7Dim1->IsNull && DM->ItemLookupDD7Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD7Weight->Value ;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD7Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD7Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD7Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
+				if ( ! DM->ItemLookupDD8Dim1->IsNull && DM->ItemLookupDD8Dim1->AsInteger > 0  ) {
+
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+					= DM->ItemLookupCat->AsString.Trim() + "/" + DM->ItemLookupOpt->AsString.Trim();
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->ItemLookupDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->ItemLookupDD8Weight->Value ;
+					DM->ConsignmentItemsDimX->Value =
+						DM->ItemLookupDD8Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->ItemLookupDD8Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->ItemLookupDD8Dim3->Value;
+
+					if ( ! DM->ItemLookupHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->ItemLookupHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+
+				}
 
 		}
 
@@ -540,7 +648,13 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 			Q->GotoBookmark(DBGrid2->SelectedRows->Items[i] );
 
 			if ( warehousecode.IsEmpty()) {
-				warehousecode = DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,2) ;
+				if ( DM->ConsignmentsViewWarehouseCode->AsAnsiString.Length() > 3 ) {
+					warehousecode = DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,2) ;
+				}
+				else
+				{
+					warehousecode = DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,1) ;
+				}
 			}
 
 #ifndef CHEAT
@@ -555,7 +669,7 @@ void __fastcall TfmConsign::actCreateCSVExecute(TObject *Sender)
 			}
 			else
 			{
-				if ( warehousecode != DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,2) )
+				if ( warehousecode != DM->ConsignmentsViewWarehouseCode->AsAnsiString.SubString(1,warehousecode.Length()) )
 				{
 					MessageDlg ( "You have more than 1 warehouse selected" , mtError , TMsgDlgButtons() << mbOK , 0 );
 					delete csv;
@@ -1998,7 +2112,7 @@ void __fastcall TfmConsign::Button19Click(TObject *Sender)
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->OptLookUpDD1Weight->Value / 1000;
+						DM->OptLookUpDD1Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->OptLookUpDD1Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -2034,7 +2148,7 @@ void __fastcall TfmConsign::Button19Click(TObject *Sender)
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->OptLookUpDD2Weight->Value / 1000;
+						DM->OptLookUpDD2Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->OptLookUpDD2Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -2071,7 +2185,7 @@ void __fastcall TfmConsign::Button19Click(TObject *Sender)
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->OptLookUpDD3Weight->Value / 1000;
+						DM->OptLookUpDD3Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->OptLookUpDD3Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -2095,6 +2209,7 @@ void __fastcall TfmConsign::Button19Click(TObject *Sender)
 
 				}
 
+
 				if ( ! DM->OptLookUpDD4Dim1->IsNull && DM->OptLookUpDD4Dim1->AsInteger > 0  ) {
 
 					try
@@ -2108,7 +2223,7 @@ void __fastcall TfmConsign::Button19Click(TObject *Sender)
 					DM->ConsignmentItemsConsignmentID->Value =
 						DM->ConsignmentsConsignmentID->Value;
 					DM->ConsignmentItemsWeight->Value =
-						DM->OptLookUpDD4Weight->Value / 1000;
+						DM->OptLookUpDD4Weight->Value ;
 					DM->ConsignmentItemsDimX->Value =
 						DM->OptLookUpDD4Dim1->Value;
 					DM->ConsignmentItemsDimY->Value =
@@ -2131,6 +2246,153 @@ void __fastcall TfmConsign::Button19Click(TObject *Sender)
 				}
 
 				}
+
+				if ( ! DM->OptLookUpDD5Dim1->IsNull && DM->OptLookUpDD5Dim1->AsInteger > 0  ) {
+
+					try
+					{
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OptLookUpCat->AsString + "/" + DM->OptLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OptLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OptLookUpDD5Weight->Value;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OptLookUpDD5Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OptLookUpDD5Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OptLookUpDD5Dim3->Value;
+
+					if ( ! DM->OptLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OptLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+				}
+				catch(Exception &E)
+				{
+					MessageDlg ( "Failed to add new consignment item 4\n\nError : " + E.Message,
+						mtError ,
+						TMsgDlgButtons() << mbOK , 0 );
+				}
+
+				}
+
+				if ( ! DM->OptLookUpDD6Dim1->IsNull && DM->OptLookUpDD6Dim1->AsInteger > 0  ) {
+
+					try
+					{
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OptLookUpCat->AsString + "/" + DM->OptLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OptLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OptLookUpDD6Weight->Value;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OptLookUpDD6Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OptLookUpDD6Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OptLookUpDD6Dim3->Value;
+
+					if ( ! DM->OptLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OptLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+				}
+				catch(Exception &E)
+				{
+					MessageDlg ( "Failed to add new consignment item 4\n\nError : " + E.Message,
+						mtError ,
+						TMsgDlgButtons() << mbOK , 0 );
+				}
+
+				}
+				if ( ! DM->OptLookUpDD7Dim1->IsNull && DM->OptLookUpDD7Dim1->AsInteger > 0  ) {
+
+					try
+					{
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OptLookUpCat->AsString + "/" + DM->OptLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OptLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OptLookUpDD7Weight->Value;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OptLookUpDD7Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OptLookUpDD7Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OptLookUpDD7Dim3->Value;
+
+					if ( ! DM->OptLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OptLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+				}
+				catch(Exception &E)
+				{
+					MessageDlg ( "Failed to add new consignment item 4\n\nError : " + E.Message,
+						mtError ,
+						TMsgDlgButtons() << mbOK , 0 );
+				}
+
+				}
+				if ( ! DM->OptLookUpDD8Dim1->IsNull && DM->OptLookUpDD8Dim1->AsInteger > 0  ) {
+
+					try
+					{
+					DM->ConsignmentItems->Insert() ;
+
+					DM->ConsignmentItemsClientProductCode->Value
+						= DM->OptLookUpCat->AsString + "/" + DM->OptLookUpOpt->AsString;
+					DM->ConsignmentItemsClientProductDescription->Value
+						= DM->OptLookUpDescription->Value;
+					DM->ConsignmentItemsConsignmentID->Value =
+						DM->ConsignmentsConsignmentID->Value;
+					DM->ConsignmentItemsWeight->Value =
+						DM->OptLookUpDD8Weight->Value;
+					DM->ConsignmentItemsDimX->Value =
+						DM->OptLookUpDD8Dim1->Value;
+					DM->ConsignmentItemsDimY->Value =
+						DM->OptLookUpDD8Dim2->Value;
+					DM->ConsignmentItemsDimZ->Value =
+						DM->OptLookUpDD8Dim3->Value;
+
+					if ( ! DM->OptLookUpHDNLCode->IsNull ) {
+						DM->ConsignmentItemsHDNLProductCode->Value
+							= DM->OptLookUpHDNLCode->Value ;
+					}
+
+					DM->ConsignmentItems->Post() ;
+				}
+				catch(Exception &E)
+				{
+					MessageDlg ( "Failed to add new consignment item 4\n\nError : " + E.Message,
+						mtError ,
+						TMsgDlgButtons() << mbOK , 0 );
+				}
+
+				}
+
 
 		si++;
 	}
@@ -2706,6 +2968,13 @@ void __fastcall TfmConsign::Button26Click(TObject *Sender)
 
 
 	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfmConsign::FormResize(TObject *Sender)
+{
+	grpItems->Height =
+		pnlConsignMain->Height - grpItems->Top - 50;
 }
 //---------------------------------------------------------------------------
 

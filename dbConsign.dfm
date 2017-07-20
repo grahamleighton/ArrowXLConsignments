@@ -1,7 +1,7 @@
 object DM: TDM
   OldCreateOrder = False
   Height = 519
-  Width = 709
+  Width = 952
   object DB: TADOConnection
     Connected = True
     ConnectionString = 
@@ -440,8 +440,18 @@ object DM: TDM
       end>
     SQL.Strings = (
       
-        'select * from viewAXLOptionData where cat=:cat or description li' +
-        'ke :cat2')
+        'SELECT     Cat, Opt, Description, Dim1, Dim2, Dim3, Volume, Weig' +
+        'ht, Price, OptionID, HDNLCode, DD1Dim1, DD1Dim2, DD1Dim3, DD1Wei' +
+        'ght, DD2Dim1, DD2Dim2, DD2Dim3, DD2Weight, DD3Dim1,'
+      
+        '                      DD3Dim2, DD3Dim3, DD3Weight, DD4Dim1, DD4D' +
+        'im2, DD4Dim3, DD4Weight, DD5Dim1, DD5Dim2, DD5Dim3, DD5Weight, D' +
+        'D6Dim1, DD6Dim2, DD6Dim3, DD6Weight, DD7Dim1, DD7Dim2,'
+      
+        '                      DD7Dim3, DD7Weight, DD8Dim1, DD8Dim2, DD8D' +
+        'im3, DD8Weight'
+      'FROM         dbo.OptionData'
+      'where cat=:cat or description like :cat2')
     Left = 224
     Top = 232
     object ItemLookupCat: TStringField
@@ -531,6 +541,54 @@ object DM: TDM
     end
     object ItemLookupDD4Weight: TIntegerField
       FieldName = 'DD4Weight'
+    end
+    object ItemLookupDD5Dim1: TIntegerField
+      FieldName = 'DD5Dim1'
+    end
+    object ItemLookupDD5Dim2: TIntegerField
+      FieldName = 'DD5Dim2'
+    end
+    object ItemLookupDD5Dim3: TIntegerField
+      FieldName = 'DD5Dim3'
+    end
+    object ItemLookupDD5Weight: TIntegerField
+      FieldName = 'DD5Weight'
+    end
+    object ItemLookupDD6Dim1: TIntegerField
+      FieldName = 'DD6Dim1'
+    end
+    object ItemLookupDD6Dim2: TIntegerField
+      FieldName = 'DD6Dim2'
+    end
+    object ItemLookupDD6Dim3: TIntegerField
+      FieldName = 'DD6Dim3'
+    end
+    object ItemLookupDD6Weight: TIntegerField
+      FieldName = 'DD6Weight'
+    end
+    object ItemLookupDD7Dim1: TIntegerField
+      FieldName = 'DD7Dim1'
+    end
+    object ItemLookupDD7Dim2: TIntegerField
+      FieldName = 'DD7Dim2'
+    end
+    object ItemLookupDD7Dim3: TIntegerField
+      FieldName = 'DD7Dim3'
+    end
+    object ItemLookupDD7Weight: TIntegerField
+      FieldName = 'DD7Weight'
+    end
+    object ItemLookupDD8Dim1: TIntegerField
+      FieldName = 'DD8Dim1'
+    end
+    object ItemLookupDD8Dim2: TIntegerField
+      FieldName = 'DD8Dim2'
+    end
+    object ItemLookupDD8Dim3: TIntegerField
+      FieldName = 'DD8Dim3'
+    end
+    object ItemLookupDD8Weight: TIntegerField
+      FieldName = 'DD8Weight'
     end
   end
   object dsItemLookup: TDataSource
@@ -1059,74 +1117,115 @@ object DM: TDM
     CommandText = 
       'declare @pcl varchar(20);'#13#10'declare @svc int;'#13#10#9#13#10#9'set @svc = :sv' +
       'c;'#13#10#9#13#10#9'set @pcl = :pcl;'#13#10#13#10#9'declare @ConsignmentID int;'#13#10#9'decla' +
-      're @Warehouse varchar(10);'#13#10#13#10'select @Warehouse=Warehouse from v' +
-      'iewAXLWarehouseCodes  where'#13#10'warehousecodeid=@svc'#13#10'if @@ROWCOUNT' +
-      ' = 0 '#13#10'begin'#13#10'  set @Warehouse='#39'MSL'#39';'#13#10'end'#13#10'select * from viewAX' +
-      'LOrderDetails where Parcel = @pcl'#13#10#9'if @@ROWCOUNT > 0  '#13#10#9'begin'#13 +
-      #10#9#13#10#9#9'insert into Consignments'#13#10#9#9#9'(CustomerReference'#13#10#9#9#9',Prima' +
-      'ryTelephone'#13#10#9#9#9',RecipientName'#13#10#9#9#9',RecipientAddress1 '#13#10#9#9#9',Reci' +
-      'pientAddress2'#13#10#9#9#9',RecipientAddress3'#13#10#9#9#9',RecipientAddress4'#13#10#9#9#9 +
-      ',RecipientPostCode '#13#10#9#9#9',ServiceCode'#13#10#9#9#9',WarehouseCode )'#13#10#9#9'('#13#10 +
-      #9#9#9'select top 1'#13#10#9#9#9#9'rtrim(ltrim(v.Agency))+'#39'-'#39'+ltrim(rtrim(Invo' +
-      'ice)) as CustRef'#13#10#9#9#9#9',coalesce(v.Phone,'#39#39')'#13#10#9#9#9#9',coalesce(v.Cus' +
-      'tomerName,'#39#39')'#13#10#9#9#9#9',coalesce(v.Address1,'#39#39')'#13#10#9#9#9#9',coalesce(v.Add' +
-      'ress2,'#39#39')'#13#10#9#9#9#9',coalesce(v.Address3,'#39#39')'#13#10#9#9#9#9',coalesce(v.Address' +
-      '4,'#39#39')'#13#10#9#9#9#9',coalesce(v.Postcode,'#39#39')'#13#10#9#9#9#9',@svc'#13#10#9#9#9#9',@Warehouse'#13 +
-      #10#9#9#9'   from viewAXLOrderDetails v where Parcel = @pcl'#13#10#9#9')'#13#10#9#9'if' +
-      ' @@ROWCOUNT > 0 '#13#10#9#9'begin'#13#10#9#9#9'select @ConsignmentID = SCOPE_IDEN' +
-      'TITY()'#13#10#9#9#9#13#10#9#9#9'insert into ConsignmentItems( ClientProductCode'#13 +
-      #10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentI' +
-      'D'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9 +
-      #9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9's' +
-      'elect top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9 +
-      #9',coalesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9 +
-      #9#9#9#9',coalesce(vi.Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Dim1 , 0 )'#13#10#9 +
-      #9#9#9#9#9#9#9#9',coalesce(vi.Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Dim3 , 0 ' +
-      ')'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXL' +
-      'OrderDetails vi where Parcel = @pcl'#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#9#9#9#9 +
-      #9#9#9#9#13#10#9#9#9'insert into ConsignmentItems( ClientProductCode'#13#10#9#9#9#9#9#9 +
-      #9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9 +
-      #9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9 +
-      ',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select t' +
-      'op 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coale' +
-      'sce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',co' +
-      'alesce(vi.DD1Weight ,0) / 1000'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD1Dim1 , ' +
-      '0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD1Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.' +
-      'DD1Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   ' +
-      'from viewAXLOrderDetails vi where Parcel = @pcl and coalesce(DD1' +
-      'Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#9#9#9#9#9#9#9#9#9#9#9#13#10#9#9#9'insert into' +
-      ' ConsignmentItems( ClientProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductD' +
-      'escription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9 +
-      #9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',H' +
-      'DNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRI' +
-      'M(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Description ,' +
-      #39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Weight ' +
-      ',0) / 1000'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coale' +
-      'sce(vi.DD2Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Dim3 , 0 )'#13#10#9#9#9#9#9 +
-      #9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXLOrderDet' +
-      'ails vi where Parcel = @pcl and coalesce(DD2Dim1,0) > 0 '#13#10#9#9#9#9#9#9 +
-      #9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#9#9#9#9#9#9#9#9#13#10#9#9#9'insert into ConsignmentItems( Clie' +
-      'ntProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9 +
-      #9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9 +
-      #9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9 +
-      #9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.O' +
-      'pt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@Consign' +
-      'mentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD3Weight ,0) / 1000'#13#10#9#9#9#9#9#9#9#9#9',c' +
-      'oalesce(vi.DD3Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD3Dim2 , 0 )'#13#10#9 +
-      #9#9#9#9#9#9#9#9',coalesce(vi.DD3Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCo' +
-      'de,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXLOrderDetails vi where Parcel = ' +
-      '@pcl and coalesce(DD3Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#13#10#9#9#9'inse' +
-      'rt into ConsignmentItems( ClientProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientP' +
-      'roductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weigh' +
-      't'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9 +
-      #9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9 +
-      #9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Descri' +
-      'ption ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD4' +
-      'Weight ,0) / 1000'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD4Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9 +
-      #9',coalesce(vi.DD4Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD4Dim3 , 0 )' +
+      're @Warehouse varchar(10);'#13#10#13#10#13#10'select @Warehouse=Warehouse from' +
+      ' viewAXLWarehouseCodes  where'#13#10'warehousecodeid=@svc'#13#10'if @@ROWCOU' +
+      'NT = 0 '#13#10'begin'#13#10'  set @Warehouse='#39'MSL'#39';'#13#10'end'#13#10'select * from view' +
+      'AXLOrderDetails where Parcel = @pcl'#13#10#9'if @@ROWCOUNT > 0  '#13#10#9'begi' +
+      'n'#13#10#9#13#10#9#9'insert into Consignments'#13#10#9#9#9'(CustomerReference'#13#10#9#9#9',Pri' +
+      'maryTelephone'#13#10#9#9#9',RecipientName'#13#10#9#9#9',RecipientAddress1 '#13#10#9#9#9',Re' +
+      'cipientAddress2'#13#10#9#9#9',RecipientAddress3'#13#10#9#9#9',RecipientAddress4'#13#10#9 +
+      #9#9',RecipientPostCode '#13#10#9#9#9',ServiceCode'#13#10#9#9#9',WarehouseCode )'#13#10#9#9'(' +
+      #13#10#9#9#9'select top 1'#13#10#9#9#9#9'rtrim(ltrim(v.Agency))+'#39'-'#39'+ltrim(rtrim(In' +
+      'voice)) as CustRef'#13#10#9#9#9#9',coalesce(v.Phone,'#39#39')'#13#10#9#9#9#9',coalesce(v.C' +
+      'ustomerName,'#39#39')'#13#10#9#9#9#9',coalesce(v.Address1,'#39#39')'#13#10#9#9#9#9',coalesce(v.A' +
+      'ddress2,'#39#39')'#13#10#9#9#9#9',coalesce(v.Address3,'#39#39')'#13#10#9#9#9#9',coalesce(v.Addre' +
+      'ss4,'#39#39')'#13#10#9#9#9#9',coalesce(v.Postcode,'#39#39')'#13#10#9#9#9#9',@svc'#13#10#9#9#9#9',@Warehous' +
+      'e'#13#10#9#9#9'   from viewAXLOrderDetails v where Parcel = @pcl'#13#10#9#9')'#13#10#9#9 +
+      'if @@ROWCOUNT > 0 '#13#10#9#9'begin'#13#10#9#9#9'select @ConsignmentID = SCOPE_ID' +
+      'ENTITY()'#13#10#9#9#9#13#10#9#9#9'insert into ConsignmentItems( ClientProductCod' +
+      'e'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',Consignmen' +
+      'tID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9 +
+      #9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9 +
+      #9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9 +
+      #9#9#9',coalesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9 +
+      #9#9#9#9#9#9',coalesce(vi.Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Dim1 , 0 )'#13 +
+      #10#9#9#9#9#9#9#9#9#9',coalesce(vi.Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Dim3 , ' +
+      '0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewA' +
+      'XLOrderDetails vi where Parcel = @pcl'#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#9#9 +
+      #9#9#9#9#9#9#13#10#9#9#9'insert into ConsignmentItems( ClientProductCode'#13#10#9#9#9#9 +
+      #9#9#9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9 +
+      #9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9 +
+      #9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select' +
+      ' top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coa' +
+      'lesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',' +
+      'coalesce(vi.DD1Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD1Dim1 , 0 )'#13#10 +
+      #9#9#9#9#9#9#9#9#9',coalesce(vi.DD1Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD1Di' +
+      'm3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from ' +
+      'viewAXLOrderDetails vi where Parcel = @pcl and coalesce(DD1Dim1,' +
+      '0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#9#9#9#9#9#9#9#9#9#9#9#13#10#9#9#9'insert into Cons' +
+      'ignmentItems( ClientProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescri' +
+      'ption '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9 +
+      #9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLPr' +
+      'oductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltr' +
+      'im(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Description ,'#39#39')'#13#10 +
+      #9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Weight ,0)'#13#10 +
+      #9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Di' +
+      'm2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD2Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesc' +
+      'e(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXLOrderDetails vi wher' +
+      'e Parcel = @pcl and coalesce(DD2Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')' +
+      #13#10#9#9#9#9#9#9#9#9#9#9#9#13#10#9#9#9'insert into ConsignmentItems( ClientProductCod' +
+      'e'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',Consignmen' +
+      'tID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9 +
+      #9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9 +
+      #9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9 +
+      #9#9#9',coalesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9 +
+      #9#9#9#9#9#9',coalesce(vi.DD3Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD3Dim1 ' +
+      ', 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD3Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(v' +
+      'i.DD3Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9' ' +
+      '  from viewAXLOrderDetails vi where Parcel = @pcl and coalesce(D' +
+      'D3Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#13#10#9#9#9'insert into Consignment' +
+      'Items( ClientProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescription '#13 +
+      #10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX' +
+      ' '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCo' +
+      'de )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.C' +
+      'at+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9 +
+      #9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD4Weight ,0)'#13#10#9#9#9#9#9#9#9 +
+      #9#9',coalesce(vi.DD4Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD4Dim2 , 0 ' +
+      ')'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD4Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HD' +
+      'NLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXLOrderDetails vi where Parce' +
+      'l = @pcl and coalesce(DD4Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#13#10 +
+      #9#9#9'insert into ConsignmentItems( ClientProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',' +
+      'ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9 +
+      #9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13 +
+      #10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13 +
+      #10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi' +
+      '.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce' +
+      '(vi.DD5Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD5Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9 +
+      #9',coalesce(vi.DD5Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD5Dim3 , 0 )' +
       #13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXLO' +
-      'rderDetails vi where Parcel = @pcl and coalesce(DD4Dim1,0) > 0 '#13 +
-      #10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#9#9#9#13#10#9#9'end'#13#10#13#10#9#9#13#10#13#10#9#9#13#10#9'end'#13#10#9
+      'rderDetails vi where Parcel = @pcl and coalesce(DD5Dim1,0) > 0 '#13 +
+      #10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#13#10#9#9#9'insert into ConsignmentItems( ClientPr' +
+      'oductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',Co' +
+      'nsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',' +
+      'DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13 +
+      #10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))' +
+      #13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@Consignment' +
+      'ID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD6Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.' +
+      'DD6Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD6Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',co' +
+      'alesce(vi.DD6Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9 +
+      #9#9#9#9#9#9#9'   from viewAXLOrderDetails vi where Parcel = @pcl and co' +
+      'alesce(DD6Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#13#10#9#9#9'insert into Con' +
+      'signmentItems( ClientProductCode'#13#10#9#9#9#9#9#9#9#9#9#9#9',ClientProductDescr' +
+      'iption '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9#9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9 +
+      #9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLP' +
+      'roductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select top 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(lt' +
+      'rim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.Description ,'#39#39')'#13 +
+      #10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD7Weight ,0)'#13 +
+      #10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD7Dim1 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD7D' +
+      'im2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD7Dim3 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coales' +
+      'ce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from viewAXLOrderDetails vi whe' +
+      're Parcel = @pcl and coalesce(DD7Dim1,0) > 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9 +
+      ')'#13#10#13#10#9#9#9'insert into ConsignmentItems( ClientProductCode'#13#10#9#9#9#9#9#9#9 +
+      #9#9#9#9',ClientProductDescription '#13#10#9#9#9#9#9#9#9#9#9#9#9',ConsignmentID'#13#10#9#9#9#9#9 +
+      #9#9#9#9#9#9',Weight'#13#10#9#9#9#9#9#9#9#9#9#9#9',DimX '#13#10#9#9#9#9#9#9#9#9#9#9#9',DimY'#13#10#9#9#9#9#9#9#9#9#9#9#9',' +
+      'DimZ'#13#10#9#9#9#9#9#9#9#9#9#9#9',HDNLProductCode )'#13#10#9#9#9#9#9#9#9'('#13#10#9#9#9#9#9#9#9#9'select to' +
+      'p 1 '#13#10#9#9#9#9#9#9#9#9#9'RTRIM(ltrim(vi.Cat+'#39'/'#39'+vi.Opt))'#13#10#9#9#9#9#9#9#9#9#9',coales' +
+      'ce(vi.Description ,'#39#39')'#13#10#9#9#9#9#9#9#9#9#9',@ConsignmentID '#13#10#9#9#9#9#9#9#9#9#9',coa' +
+      'lesce(vi.DD8Weight ,0)'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD8Dim1 , 0 )'#13#10#9#9#9 +
+      #9#9#9#9#9#9',coalesce(vi.DD8Dim2 , 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.DD8Dim3 ' +
+      ', 0 )'#13#10#9#9#9#9#9#9#9#9#9',coalesce(vi.HDNLCode,'#39#39') '#13#10#9#9#9#9#9#9#9#9#9'   from vie' +
+      'wAXLOrderDetails vi where Parcel = @pcl and coalesce(DD8Dim1,0) ' +
+      '> 0 '#13#10#9#9#9#9#9#9#9#9#13#10#9#9#9#9#9#9#9')'#13#10#13#10#13#10#9#9'end'#13#10#13#10#9#9#13#10#13#10#9#9#13#10#9'end'#13#10#9
     Connection = DB
     Parameters = <
       item
@@ -1141,8 +1240,8 @@ object DM: TDM
         Size = 16
         Value = '9026175964034031'
       end>
-    Left = 536
-    Top = 240
+    Left = 696
+    Top = 176
   end
   object ConsignmentWeight: TADOQuery
     Connection = DB
@@ -1778,6 +1877,54 @@ object DM: TDM
     end
     object OptLookUpDD4Weight: TIntegerField
       FieldName = 'DD4Weight'
+    end
+    object OptLookUpDD5Dim1: TIntegerField
+      FieldName = 'DD5Dim1'
+    end
+    object OptLookUpDD5Dim2: TIntegerField
+      FieldName = 'DD5Dim2'
+    end
+    object OptLookUpDD5Dim3: TIntegerField
+      FieldName = 'DD5Dim3'
+    end
+    object OptLookUpDD5Weight: TIntegerField
+      FieldName = 'DD5Weight'
+    end
+    object OptLookUpDD6Dim1: TIntegerField
+      FieldName = 'DD6Dim1'
+    end
+    object OptLookUpDD6Dim2: TIntegerField
+      FieldName = 'DD6Dim2'
+    end
+    object OptLookUpDD6Dim3: TIntegerField
+      FieldName = 'DD6Dim3'
+    end
+    object OptLookUpDD6Weight: TIntegerField
+      FieldName = 'DD6Weight'
+    end
+    object OptLookUpDD7Dim1: TIntegerField
+      FieldName = 'DD7Dim1'
+    end
+    object OptLookUpDD7Dim2: TIntegerField
+      FieldName = 'DD7Dim2'
+    end
+    object OptLookUpDD7Dim3: TIntegerField
+      FieldName = 'DD7Dim3'
+    end
+    object OptLookUpDD7Weight: TIntegerField
+      FieldName = 'DD7Weight'
+    end
+    object OptLookUpDD8Dim1: TIntegerField
+      FieldName = 'DD8Dim1'
+    end
+    object OptLookUpDD8Dim2: TIntegerField
+      FieldName = 'DD8Dim2'
+    end
+    object OptLookUpDD8Dim3: TIntegerField
+      FieldName = 'DD8Dim3'
+    end
+    object OptLookUpDD8Weight: TIntegerField
+      FieldName = 'DD8Weight'
     end
   end
   object Q: TADOQuery
