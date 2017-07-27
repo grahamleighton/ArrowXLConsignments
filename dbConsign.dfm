@@ -439,19 +439,48 @@ object DM: TDM
         Value = '%BENCH%'
       end>
     SQL.Strings = (
+      'SELECT     Cat, Opt, Description, Dim1, Dim2, Dim3, Volume'
       
-        'SELECT     Cat, Opt, Description, Dim1, Dim2, Dim3, Volume, Weig' +
-        'ht, Price, OptionID, HDNLCode, DD1Dim1, DD1Dim2, DD1Dim3, DD1Wei' +
-        'ght, DD2Dim1, DD2Dim2, DD2Dim3, DD2Weight, DD3Dim1,'
+        ', case when Weight > 999 then Weight / 1000 else Weight end as W' +
+        'eight'
+      ', Price, OptionID, HDNLCode, DD1Dim1, DD1Dim2, DD1Dim3'
       
-        '                      DD3Dim2, DD3Dim3, DD3Weight, DD4Dim1, DD4D' +
-        'im2, DD4Dim3, DD4Weight, DD5Dim1, DD5Dim2, DD5Dim3, DD5Weight, D' +
-        'D6Dim1, DD6Dim2, DD6Dim3, DD6Weight, DD7Dim1, DD7Dim2,'
+        ',case when DD1Weight > 999 then DD1Weight / 1000 else DD1Weight ' +
+        'end as DD1Weight'
+      ', DD2Dim1, DD2Dim2, DD2Dim3'
       
-        '                      DD7Dim3, DD7Weight, DD8Dim1, DD8Dim2, DD8D' +
-        'im3, DD8Weight'
+        ', case when DD2Weight > 999 then DD2Weight / 1000 else DD2Weight' +
+        ' end as DD2Weight'
+      ', DD3Dim1,'
+      '                      DD3Dim2, DD3Dim3'
+      
+        ',case when DD3Weight > 999 then DD3Weight / 1000 else DD3Weight ' +
+        'end as DD3Weight'
+      ', DD4Dim1, DD4Dim2, DD4Dim3'
+      
+        ',case when DD4Weight > 999 then DD4Weight / 1000 else DD4Weight ' +
+        'end as DD4Weight'
+      ', DD5Dim1, DD5Dim2, DD5Dim3'
+      
+        ',case when DD5Weight > 999 then DD5Weight / 1000 else DD5Weight ' +
+        'end as DD5Weight'
+      ', DD6Dim1, DD6Dim2, DD6Dim3'
+      
+        ',case when DD6Weight > 999 then DD6Weight / 1000 else DD6Weight ' +
+        'end as DD6Weight'
+      ''
+      ', DD7Dim1, DD7Dim2'
+      ',DD7Dim3'
+      
+        ',case when DD7Weight > 999 then DD7Weight / 1000 else DD7Weight ' +
+        'end as DD7Weight'
+      ',DD8Dim1, DD8Dim2, DD8Dim3'
+      
+        ',case when DD8Weight > 999 then DD8Weight / 1000 else DD8Weight ' +
+        'end as DD8Weight'
       'FROM         dbo.OptionData'
-      'where cat=:cat or description like :cat2')
+      ' where cat=:cat or description like :cat2'
+      '')
     Left = 224
     Top = 232
     object ItemLookupCat: TStringField

@@ -1,7 +1,7 @@
 object fmConsign: TfmConsign
   Left = 0
   Top = 0
-  Caption = 'Arrow XL Metapack Consignment Management System Version : 1.5'
+  Caption = 'Arrow XL Metapack Consignment Management System Version : 1.6'
   ClientHeight = 793
   ClientWidth = 1020
   Color = clBtnFace
@@ -344,7 +344,7 @@ object fmConsign: TfmConsign
       Top = 1
       Width = 1018
       Height = 683
-      ActivePage = tabDDOrders
+      ActivePage = tabConsignment
       Align = alClient
       MultiLine = True
       TabOrder = 0
